@@ -1,0 +1,32 @@
+@import 'src/app/styles/variables';
+.charts-wrapper {
+    display: flex;
+    margin: 0 8px;
+    @media (max-width: $normal) {
+        flex-wrap: wrap;
+    }
+}
+
+.chart {
+    width: 100%;
+    @media (max-width: $normal) {
+        width: 50%;
+    }
+    @media (max-width: $small) {
+        width: 100%;
+    }
+    mat-card {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+}
+
+.presentation {
+    max-height: 100vh !important;
+    overflow: auto;
+}
+
+.slide-button {
+    margin: 0px 20px;
+}

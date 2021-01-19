@@ -1,0 +1,24 @@
+.amcharts-amexport-item {
+    color: red;
+}
+
+.amcharts-amexport-top .amcharts-amexport-item>.amcharts-amexport-menu {
+    top: -3px!important;
+    left: 2px
+}
+
+.presentacion {
+    height: 500px !important;
+}
+
+@media only screen and (max-height: 1080px) {
+    .presentacion {
+        height: 300px !important;
+    }
+}
+
+@media only screen and (max-height: 720px) {
+    .presentacion {
+        height: 250px !important;
+    }
+}
