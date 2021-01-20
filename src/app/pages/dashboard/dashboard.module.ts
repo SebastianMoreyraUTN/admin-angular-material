@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
-import { NgxEchartsModule } from 'ngx-echarts';
-import { TrendModule } from 'ngx-trend';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -18,21 +16,18 @@ import { FormsModule } from '@angular/forms';
 import { DashboardPageComponent } from './containers';
 
 import { SharedModule } from '../../shared/shared.module';
-import { MyFirstChartComponent } from '../../charts/my-first-chart/my-first-chart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { ChartsModule } from '../../charts/charts.module';
 
 
 @NgModule({
   declarations: [
     DashboardPageComponent,
-    MyFirstChartComponent,
   ],
   imports: [
     CommonModule,
     MatTableModule,
-    NgxEchartsModule,
-    TrendModule,
     MatCardModule,
     MatIconModule,
     MatMenuModule,
@@ -46,7 +41,8 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
     FormsModule,
     SharedModule,
     HttpClientModule,
-    MatCarouselModule.forRoot()
+    MatCarouselModule.forRoot(),
+    ChartsModule
   ]
 })
 export class DashboardModule { }

@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { DashboardPageComponent } from './pages/dashboard/containers';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import {AuthGuard} from './pages/auth/guards';
+import { UsuariosModule } from './pages/usuarios/usuarios.module';
+import { VistasRoutingModule } from './pages/vistas/vistas-routing.module';
 
 const routes: Routes = [
   {
@@ -16,6 +18,36 @@ const routes: Routes = [
     pathMatch: 'full',
     canActivate: [AuthGuard],
     component: DashboardPageComponent
+  },
+  {
+    path: 'inicio',
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/inicio/inicio.module').then(m => m.InicioModule)
+  },
+  {
+    path: 'usuarios',
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/usuarios/usuarios.module').then(m => m.UsuariosModule)
+  },
+  {
+    path: 'reportes',
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/reportes/reportes.module').then(m => m.ReportesModule)
+  },
+  {
+    path: 'vistas',
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/vistas/vistas.module').then(m => m.VistasModule)
+  },
+  {
+    path: 'presentaciones',
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/presentaciones/presentaciones.module').then(m => m.PresentacionesModule)
   },
   {
     path: 'tables',
