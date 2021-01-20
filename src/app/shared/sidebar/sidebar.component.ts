@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Observable } from 'rxjs';
+import { options } from '../../../assets/data/menu.opts';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -9,11 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class SidebarComponent {
   @Input() isOpenUiElements = false;
-  menuOpts:Observable<any>;
+  menuOpts:any[] = options;
   constructor(private dataService:DataService) {}
   
 
-  ngOnInit() {
-    this.menuOpts = this.dataService.getMenuOpts();
-  }
 }

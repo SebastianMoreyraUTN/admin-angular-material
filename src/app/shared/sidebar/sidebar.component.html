@@ -1,5 +1,5 @@
 <mat-list>
-    <mat-list-item *ngFor="let menu of menuOpts | async" routerLink="{{menu.redirectTo}}" routerLinkActive="active">
+    <mat-list-item *ngFor="let menu of menuOpts" routerLink="{{menu.redirectTo}}" routerLinkActive="active">
         <mat-icon>{{menu.icon}}</mat-icon>
         <span [hidden]="isOpenUiElements">{{menu.name}}</span>
     </mat-list-item>
