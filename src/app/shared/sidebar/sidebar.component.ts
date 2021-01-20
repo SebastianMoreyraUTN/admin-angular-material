@@ -12,6 +12,7 @@ import { options } from '../../../assets/data/menu.opts';
 export class SidebarComponent {
   @Input() isOpenUiElements = false;
   menuOpts:any[] = options;
+  
   constructor(private dataService:DataService) {}
   
 

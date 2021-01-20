@@ -8,6 +8,7 @@ import { InicioPageComponent } from './containers/inicio-page/inicio-page.compon
 import { InicioRoutingModule } from './inicio-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { CardBadgeComponent } from './components/index';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -25,7 +26,8 @@ import { CardBadgeComponent } from './components/index';
     MatToolbarModule,
     MatGridListModule,
     InicioRoutingModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ]
 })
 export class InicioModule { }
