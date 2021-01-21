@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 import { PresentacionesPageComponent } from './containers/presentaciones-page/presentaciones-page.component';
 import { PresentacionesRoutingModule } from './presentaciones-routing.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 
@@ -14,7 +15,8 @@ import { PresentacionesRoutingModule } from './presentaciones-routing.module';
     CommonModule,
     SharedModule,
     PresentacionesRoutingModule,
-    SharedModule
+    SharedModule,
+    MatToolbarModule
   ]
 })
 export class PresentacionesModule { }

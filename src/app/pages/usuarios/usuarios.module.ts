@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 import { UsuariosPageComponent } from './containers/usuarios-page/usuarios-page.component';
 import { UsuariosRoutingModule } from './usuarios-routing.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 
@@ -11,7 +12,8 @@ import { UsuariosRoutingModule } from './usuarios-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    UsuariosRoutingModule
+    UsuariosRoutingModule,
+    MatToolbarModule
   ]
 })
 export class UsuariosModule { }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 import { VistasRoutingModule } from './vistas-routing.module';
 import { VistasPageComponent } from './containers/vistas-page/vistas-page.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 
@@ -12,7 +13,8 @@ import { VistasPageComponent } from './containers/vistas-page/vistas-page.compon
   imports: [
     CommonModule,
     SharedModule,
-    VistasRoutingModule
+    VistasRoutingModule,
+    MatToolbarModule
   ]
 })
 export class VistasModule { }
