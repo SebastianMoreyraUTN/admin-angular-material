@@ -32,6 +32,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/usuarios/usuarios.module').then(m => m.UsuariosModule)
   },
   {
+    path: 'grupos-permisos',
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/grupos-permisos/grupos-permisos.module').then(m => m.GruposPermisosModule)
+  },
+  {
     path: 'reportes',
     pathMatch: 'full',
     canActivate: [AuthGuard],

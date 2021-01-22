@@ -9,6 +9,11 @@ export const options = [{
     "redirectTo": "/usuarios"
 },
 {
+    "name": "Grupos - Permisos",
+    "icon": "security",
+    "redirectTo": "/grupos-permisos"
+},
+{
     "name": "Reportes",
     "icon": "assignment",
     "redirectTo": "/reportes"
