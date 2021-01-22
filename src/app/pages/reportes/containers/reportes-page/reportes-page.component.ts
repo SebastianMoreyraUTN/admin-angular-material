@@ -46,6 +46,5 @@ export class ReportesPageComponent implements OnInit {
 
   public showFilterInput(): void {
     this.isShowFilterInput = !this.isShowFilterInput;
-    this.dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
   }
 }

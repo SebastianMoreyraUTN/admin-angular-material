@@ -7,19 +7,12 @@
         <mat-card class="table-wrapper">
 
             <mat-card-title class="table-wrapper__header">
-                <p *ngIf="!isShowFilterInput" class="table-wrapper__title">Reportes</p>
-                <div *ngIf="isShowFilterInput" class="table-wrapper__search">
+                <div class="table-wrapper__search">
                     <div class="table-wrapper__icon-wrapper">
                         <mat-icon class="table-wrapper__icon">search</mat-icon>
                     </div>
                     <input matInput class="table-wrapper__search-input" (keyup)="applyFilter($event)">
-                    <button class="table-wrapper__button" mat-mini-fab (click)="showFilterInput()">
-                <mat-icon class="table-wrapper__icon">close</mat-icon>
-              </button>
                 </div>
-                <button class="table-wrapper__button" mat-mini-fab (click)="showFilterInput()">
-              <mat-icon class="table-wrapper__icon">search</mat-icon>
-            </button>
             </mat-card-title>
 
             <mat-card-content class="table__content">
