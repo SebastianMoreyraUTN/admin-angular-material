@@ -14,7 +14,7 @@ export class LayoutComponent implements OnDestroy {
   private mobileQueryListener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 1024px)');
+    this.mobileQuery = media.matchMedia('(max-width: 1200px)');
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this.mobileQueryListener);
 

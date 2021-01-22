@@ -24,7 +24,12 @@ export const options = [{
     "redirectTo": "/vistas"
 },
 {
+    "name": "Tableros",
+    "icon": "dashboard",
+    "redirectTo": "/tableros"
+},
+{
     "name": "Presentaciones",
-    "icon": "tab",
+    "icon": "movie_creation",
     "redirectTo": "/presentaciones"
 }]

@@ -14,12 +14,6 @@ const routes: Routes = [
     component: DashboardPageComponent
   },
   {
-    path: 'tableros',
-    pathMatch: 'full',
-    canActivate: [AuthGuard],
-    component: DashboardPageComponent
-  },
-  {
     path: 'inicio',
     pathMatch: 'full',
     canActivate: [AuthGuard],
@@ -48,6 +42,12 @@ const routes: Routes = [
     pathMatch: 'full',
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/vistas/vistas.module').then(m => m.VistasModule)
+  },
+  {
+    path: 'tableros',
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/tableros/tableros.module').then(m => m.TablerosModule)
   },
   {
     path: 'presentaciones',
