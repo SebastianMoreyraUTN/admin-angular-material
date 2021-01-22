@@ -4,6 +4,13 @@ import { SharedModule } from '../../shared/shared.module';
 import { ReportesPageComponent } from './containers/reportes-page/reportes-page.component';
 import { ReportesRoutingModule } from './reportes-routing.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -14,7 +21,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     CommonModule,
     SharedModule,
     ReportesRoutingModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class ReportesModule { }
