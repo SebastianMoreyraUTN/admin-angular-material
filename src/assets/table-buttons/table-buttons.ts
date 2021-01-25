@@ -1,5 +1,3 @@
-import { colors } from '../../app/consts/colors';
-
 export const buttons = {
     editar : {
         def: "editar",
