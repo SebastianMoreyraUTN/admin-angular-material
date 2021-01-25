@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { buttons } from '../../../../../assets/table-buttons/table-buttons';
+
 
 const ELEMENT_DATA: any = [
   { nombre: 'Cartera Fecha', url: 'http://transactor.grupounion.com.ar:780/api.php', consulta: 'CarteraFecha', actualizado: '00/00/0000' },
@@ -27,23 +26,13 @@ const ELEMENT_DATA: any = [
 })
 export class ReportesPageComponent implements OnInit {
   displayedColumns: string[] = ['nombre', 'url', 'consulta', 'actualizado','editar','eliminar','actualizar'];
-  dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  data:any[] = ELEMENT_DATA;
+  columnas= ['nombre','url','consulta','actualizado'];
+  botonesTabla = [buttons.editar,buttons.actualizar, buttons.eliminar];
 
 
   constructor() {}
 
   ngOnInit(): void {}
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
 
 }

@@ -18,16 +18,16 @@
                     {{button.title}}
                 </th>
                 <td class="table__table-body" mat-cell *matCellDef="let row">
-                    <button mat-icon-button [color]="button.color" aria-label="Editar">
+                    <button mat-icon-button [ngStyle]="{'color': button.color}" aria-label="Editar">
                             <mat-icon>{{button.icon}}</mat-icon>
                           </button>
                 </td>
             </ng-container>
 
             <!-- Columna Nombre -->
-            <ng-container *ngFor="let columna of columnas; let i = index" [matColumnDef]="columna.nombre">
+            <ng-container *ngFor="let columna of columnas" [matColumnDef]="columna">
                 <th class="table__table-header" mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-                <td class="table__table-body" mat-cell *matCellDef="let element"> {{element[columna.nombre]}} </td>
+                <td class="table__table-body" mat-cell *matCellDef="let element"> {{element[columna]}} </td>
             </ng-container>
 
 

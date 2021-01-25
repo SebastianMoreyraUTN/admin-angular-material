@@ -1,23 +1,29 @@
+import { colors } from '../../app/consts/colors';
+
 export const buttons = {
     editar : {
         def: "editar",
         title: "Editar",
-        icon: "edit"
+        icon: "edit",
+        color: "#9013FE"
     },
     eliminar: {
         def:"eliminar",
         title:"Eliminar",
-        icon: "delete"
+        icon: "delete",
+        color: "#ff0f60"
     },
     actualizar: {
         def:"actualizar",
         title:"Actualizar",
-        icon:"update"
+        icon:"update",
+        color: "#4A4A4A"
     },
     ver: {
         def:"ver",
         title:"Ver",
-        icon:"preview"
+        icon:"preview",
+        color:"#536DFE"
     }
 
 }

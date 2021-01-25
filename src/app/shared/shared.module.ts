@@ -47,7 +47,8 @@ import { MatCardModule } from '@angular/material/card';
     HeaderModule,
     SidebarComponent,
     FooterComponent,
-    LayoutComponent
+    LayoutComponent,
+    TableComponent
   ]
 })
 export class SharedModule { }

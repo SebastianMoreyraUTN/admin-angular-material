@@ -24,6 +24,8 @@ export class TableComponent implements OnInit {
   
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<any>(this.data);
+    console.log(this.displayedColumns);
+    console.log(this.buttons)
   }
 
   ngAfterViewInit() {
