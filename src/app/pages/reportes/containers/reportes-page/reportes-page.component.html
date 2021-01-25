@@ -2,7 +2,6 @@
     <mat-toolbar class="page-header" role="heading">
         <h1>Reportes</h1>
     </mat-toolbar>
-    <app-table [data]="data" [displayedColumns]="displayedColumns" [columnas]="columnas" [buttons]="botonesTabla"></app-table>
-
+    <app-table (clickBoton)="clickEnBotonFila($event)" [data]="data" [displayedColumns]="displayedColumns" [columnas]="columnas" [buttons]="botonesTabla"></app-table>
 
 </app-layout>

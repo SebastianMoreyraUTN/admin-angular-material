@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-table',
@@ -21,10 +22,10 @@ export class TableComponent implements OnInit {
   @Input() buttons: any[];
   @Input() columnas: string[];
 
+  @Output() clickBoton = new EventEmitter()
+
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<any>(this.data);
-    console.log(this.displayedColumns);
-    console.log(this.buttons);
   }
 
   ngAfterViewInit() {
@@ -36,6 +37,11 @@ export class TableComponent implements OnInit {
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  emitirEvento(fila:any, button:any) {
+    let evento = {fila,button};
+    this.clickBoton.emit(evento);
   }
 
   traducirPaginador() {

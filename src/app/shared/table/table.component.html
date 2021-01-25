@@ -11,22 +11,22 @@
     <mat-card-content class="table__content">
         <table class="table__table" mat-table [dataSource]="dataSource" matSort>
 
-            <!-- Columna Editar -->
+            <!-- Botones -->
 
-            <ng-container *ngFor="let button of buttons" [matColumnDef]="button.def">
+            <ng-container *ngFor="let button of buttons" [matColumnDef]="button.name">
                 <th class="table__table-header" mat-header-cell *matHeaderCellDef>
-                    {{button.title}}
+                    {{button.name | titlecase}}
                 </th>
                 <td class="table__table-body" mat-cell *matCellDef="let row">
-                    <button mat-icon-button [ngStyle]="{'color': button.color}" aria-label="Editar">
+                    <button mat-icon-button [ngStyle]="{'color': button.color}" (click)="emitirEvento(row,button)">
                             <mat-icon>{{button.icon}}</mat-icon>
                           </button>
                 </td>
             </ng-container>
 
-            <!-- Columna Nombre -->
+            <!-- Columnas -->
             <ng-container *ngFor="let columna of columnas" [matColumnDef]="columna">
-                <th class="table__table-header" mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                <th class="table__table-header" mat-header-cell *matHeaderCellDef mat-sort-header>{{columna | titlecase}}</th>
                 <td class="table__table-body" mat-cell *matCellDef="let element"> {{element[columna]}} </td>
             </ng-container>
 

@@ -35,4 +35,8 @@ export class ReportesPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  clickEnBotonFila(evento:any) {
+    console.log(evento);
+  }
+
 }
