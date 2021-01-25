@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 const ELEMENT_DATA: any = [
@@ -27,8 +28,8 @@ const ELEMENT_DATA: any = [
 export class ReportesPageComponent implements OnInit {
   displayedColumns: string[] = ['nombre', 'url', 'consulta', 'actualizado','editar','eliminar','actualizar'];
   dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
-  isShowFilterInput:boolean = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
 
   constructor() {}
@@ -37,6 +38,7 @@ export class ReportesPageComponent implements OnInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event): void {
@@ -44,7 +46,4 @@ export class ReportesPageComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  public showFilterInput(): void {
-    this.isShowFilterInput = !this.isShowFilterInput;
-  }
 }

@@ -13,13 +13,19 @@ import { HeaderModule } from './header/header.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
+import { TableComponent } from './table/table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
   declarations: [
     SidebarComponent,
     FooterComponent,
-    LayoutComponent
+    LayoutComponent,
+    TableComponent
   ],
   imports: [
     HeaderModule,
@@ -31,7 +37,11 @@ import { LayoutComponent } from './layout/layout.component';
     MatMenuModule,
     MatSelectModule,
     FormsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatCardModule
   ],
   exports: [
     HeaderModule,

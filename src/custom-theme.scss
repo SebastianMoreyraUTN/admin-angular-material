@@ -155,7 +155,7 @@ button.mat-fab .mat-button-wrapper {
 mat-toolbar.page-header {
     display: flex;
     justify-content: space-between;
-    padding: 50px 24px 16px 24px;
+    padding: 24px 24px 16px 16px;
     background: none;
     height: auto;
     @media (max-width: $small) {
@@ -166,7 +166,7 @@ mat-toolbar.page-header {
 
 .mat-toolbar h1 {
     font-weight: 400;
-    font-size: 38.4px;
+    font-size: $fs-xxl;
     color: $toolbar-title-font-color;
     line-height: 1;
     letter-spacing: -0.2186px;
