@@ -12,16 +12,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
+import { FormReportesComponent } from './components/form-reportes/form-reportes.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
 
 @NgModule({
-  declarations: [ReportesPageComponent],
+  declarations: [ReportesPageComponent, FormReportesComponent],
   imports: [
     CommonModule,
     SharedModule,
     ReportesRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     MatToolbarModule,
     MatCardModule,
     MatTableModule,
@@ -30,7 +35,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule
   ]
 })
 export class ReportesModule { }
