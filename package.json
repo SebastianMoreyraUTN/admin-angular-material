@@ -26,6 +26,7 @@
     "apexcharts": "^3.19.3",
     "echarts": "^4.7.0",
     "font-awesome": "^4.7.0",
+    "material-dual-listbox": "^2.0.16",
     "ng-apexcharts": "^1.2.3",
     "ngx-echarts": "^4.2.2",
     "ngx-toastr": "^12.0.1",

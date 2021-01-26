@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CardBadgeComponent implements OnInit {
   @Input() icon:string = '';
   @Input() title:string = '';
+
   constructor() { }
 
   ngOnInit(): void {
