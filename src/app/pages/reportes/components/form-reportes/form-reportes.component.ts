@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -16,13 +17,16 @@ export class FormReportesComponent implements OnInit {
     {value:'anual',viewValue:'Anual'}
   ]
   reporteForm = new FormGroup({
-    nombre: new FormControl(''),
-    url: new FormControl(''),
-    hash: new FormControl(''),
-    consulta: new FormControl(''),
+    nombre: new FormControl('',[Validators.required]),
+    url: new FormControl('',[Validators.required]),
+    hash: new FormControl('',[Validators.required]),
+    consulta: new FormControl('',[Validators.required]),
     parametros: new FormControl(''),
-    actualizacion: new FormControl(''),
+    actualizacion: new FormControl('',[Validators.required]),
   })
+  titulo:string = 'Nuevo Reporte';
+  modo:string = 'crear';
+
   constructor() { }
 
   ngOnInit(): void {
@@ -30,6 +34,34 @@ export class FormReportesComponent implements OnInit {
 
   guardarReporte(){
     console.log(this.reporteForm.value);
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      text: 'El reporte ha sido guardado correctamente',
+      showConfirmButton: true,
+      showCloseButton:true
+    })
   }
 
+  mostrarError(formControl) {
+    if(formControl.hasError('required')) {
+      return 'Debes ingresar un valor'
+    }
+  }
+
+  mapearValores(fila) {
+    this.reporteForm.patchValue({
+      nombre:fila.nombre,
+      url: fila.url,
+      consulta: fila.consulta,
+      hash:fila.hash,
+      actualizacion:fila.actualizacion
+    });
+    this.reporteForm.get('actualizacion');
+    console.log(this.reporteForm.value)
+  }
+
+  scroll(el: HTMLElement) {
+    el.scrollIntoView({behavior: 'smooth'});
+  }
 }

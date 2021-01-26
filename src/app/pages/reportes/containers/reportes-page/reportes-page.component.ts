@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { buttons } from '../../../../../assets/table-buttons/table-buttons';
+import { FormReportesComponent } from '../../components/form-reportes/form-reportes.component';
 
 
 const ELEMENT_DATA: any = [
-  { nombre: 'Cartera Fecha', url: 'http://transactor.grupounion.com.ar:780/api.php', consulta: 'CarteraFecha', actualizado: '00/00/0000' },
+  { nombre: 'Cartera Fecha', url: 'http://transactor.grupounion.com.ar:780/api.php', consulta: 'CarteraFecha', actualizado: '00/00/0000',hash:'hash',actualizacion:'manual' },
   { nombre: 'Reporte2', url: 'Helium', consulta: '4.0026', actualizado: 'He' },
   { nombre: 'Reporte3', url: 'Lithium', consulta: '6.941', actualizado: 'Li' },
   {
@@ -29,6 +30,8 @@ export class ReportesPageComponent implements OnInit {
   data:any[] = ELEMENT_DATA;
   columnas= ['nombre','url','consulta','actualizado'];
   botonesTabla = [buttons.editar,buttons.actualizar, buttons.eliminar];
+  @ViewChild('scroll') formDiv: ElementRef;
+  @ViewChild('form') form : FormReportesComponent;
 
 
   constructor() {}
@@ -36,7 +39,38 @@ export class ReportesPageComponent implements OnInit {
   ngOnInit(): void {}
 
   clickEnBotonFila(evento:any) {
-    console.log(evento);
+    switch (evento.button.name) {
+      case 'editar':
+        this.editarReporte(evento.fila)
+        break;
+      case 'actualizar':
+        this.actualizarReporte(evento.fila)
+        break;
+      case 'eliminar':
+        this.eliminarReporte(evento.fila)
+        break;  
+       
+    
+      default:
+        break;
+    }
+  }
+  eliminarReporte(fila:any) {
+    console.log(fila, 'eliminado');
+  }
+  actualizarReporte(fila:any) {
+    console.log(fila, 'actualizado');
+  }
+
+  editarReporte(fila:any) {
+    this.form.mapearValores(fila);
+      this.form.titulo = "Editar Reporte",
+      this.form.modo = 'editar';
+      this.scroll();
+  }
+
+  scroll() {
+    this.formDiv.nativeElement.scrollIntoView({behavior: 'smooth'});
   }
 
 }

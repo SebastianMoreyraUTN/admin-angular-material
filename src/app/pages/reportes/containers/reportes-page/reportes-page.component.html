@@ -3,6 +3,8 @@
         <h1>Reportes</h1>
     </mat-toolbar>
     <app-table (clickBoton)="clickEnBotonFila($event)" [data]="data" [displayedColumns]="displayedColumns" [columnas]="columnas" [buttons]="botonesTabla"></app-table>
-    <app-form-reportes></app-form-reportes>
+    <div #scroll class="row">
+        <app-form-reportes #form></app-form-reportes>
+    </div>
 
 </app-layout>
