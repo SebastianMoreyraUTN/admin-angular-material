@@ -75,15 +75,39 @@ export class DualMultiselectComponent implements OnInit {
   }
 
   seleccionarTodos() {
+    if (this.mostrarFiltradosIzquierda) {
+      this.seleccionados.push(...this.filtradosIzquierda);
+      this.items = this.items.filter((item) => {
+        for (let index = 0; index < this.filtradosIzquierda.length; index++) {
+          if (item === this.filtradosIzquierda[index]) {
+            return false;
+          }
+        }
+        return true;
+      });
+      this.filtradosIzquierda = [];
+      return;
+    }
     this.seleccionados.push(...this.items);
     this.items = [];
-    this.filtradosIzquierda = [];
   }
 
   quitarTodos() {
+    if (this.mostrarFiltradosDerecha) {
+      this.items.push(...this.filtradosDerecha);
+      this.seleccionados = this.seleccionados.filter((item) => {
+        for (let index = 0; index < this.filtradosDerecha.length; index++) {
+          if (item === this.filtradosDerecha[index]) {
+            return false;
+          }
+        }
+        return true;
+      });
+      this.filtradosDerecha = [];
+      return;
+    }
     this.items.push(...this.seleccionados);
     this.seleccionados = [];
-    this.filtradosDerecha = [];
   }
 
   limpiarFiltro(inputIzquierda?, inputDerecha?): void {
