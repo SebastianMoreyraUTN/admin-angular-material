@@ -1,10 +1,23 @@
+@import "src/app/styles/colors";
 mat-form-field {
-    width: 100% !important
+    width: 100% !important;
 }
 
 .contenedor-items {
+    border: $light-grey;
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 5px;
     width: 100% !important;
     height: 250px !important;
     overflow-y: scroll;
     margin: 0px !important;
+}
+
+.boton-todos {
+    margin: 5px;
+}
+
+.icon-todos {
+    margin-bottom: 5px;
 }

@@ -22,14 +22,13 @@ import { DualMultiselectComponent } from './dual-multiselect/dual-multiselect.co
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-
 @NgModule({
   declarations: [
     SidebarComponent,
     FooterComponent,
     LayoutComponent,
     TableComponent,
-    DualMultiselectComponent
+    DualMultiselectComponent,
   ],
   imports: [
     HeaderModule,
@@ -48,7 +47,7 @@ import { MatInputModule } from '@angular/material/input';
     MatSortModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
   ],
   exports: [
     HeaderModule,
@@ -56,7 +55,7 @@ import { MatInputModule } from '@angular/material/input';
     FooterComponent,
     LayoutComponent,
     TableComponent,
-    DualMultiselectComponent
-  ]
+    DualMultiselectComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

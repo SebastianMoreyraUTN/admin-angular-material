@@ -1,0 +1,9 @@
+{
+  "html.format.contentUnformatted": "",
+  "html.format.templating": false,
+"html.format.unformatted": "",
+"editor.defaultFormatter": "esbenp.prettier-vscode",
+"[html]": {
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+}
