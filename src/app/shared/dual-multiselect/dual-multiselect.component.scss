@@ -3,8 +3,13 @@ mat-form-field {
     width: 100% !important;
 }
 
+.multiselect-header {
+    height: 35px;
+    font-size: 20px;
+}
+
 .contenedor-items {
-    border: $light-grey;
+    border: #e3e3e3;
     border-style: solid;
     border-width: 0.5px;
     border-radius: 5px;
@@ -14,10 +19,23 @@ mat-form-field {
     margin: 0px !important;
 }
 
+.multiselect {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: #e3e3e3;
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 5px;
+}
+
 .boton-todos {
     margin: 5px;
 }
 
 .icon-todos {
     margin-bottom: 5px;
+}
+
+.row {
+    margin: 10px;
 }

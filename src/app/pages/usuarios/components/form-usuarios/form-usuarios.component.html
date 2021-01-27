@@ -1,4 +1,4 @@
-<div class="col-sm-12 col-lg-6">
+<div class="col-sm-12 col-lg-12">
     <mat-card class="mat-elevation-z10">
         <mat-card-title #elemento>
             <h3>
@@ -7,6 +7,7 @@
             </h3>
         </mat-card-title>
         <mat-card-content>
+            <app-dual-multiselect #multiselect></app-dual-multiselect>
             <form [formGroup]="usuarioForm">
                 <div class="row">
                     <div class="col 12">

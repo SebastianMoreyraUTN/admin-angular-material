@@ -3,50 +3,54 @@ import { buttons } from 'src/assets/table-buttons/table-buttons';
 import { FormUsuariosComponent } from '../../components/form-usuarios/form-usuarios.component';
 const DATA = [
   {
-    nombre:'Sebastian',
-    apellido:'Moreyra',
-    email:'sm@gmail.com'
+    nombre: 'Sebastian',
+    apellido: 'Moreyra',
+    email: 'sm@gmail.com',
   },
   {
-    nombre:'Alan',
-    apellido:'Pieckenstainer',
-    email:'a@gmail.com'
+    nombre: 'Alan',
+    apellido: 'Pieckenstainer',
+    email: 'a@gmail.com',
   },
   {
-    nombre:'Franco',
-    apellido:'Morini',
-    email:'fm@gmail.com'
+    nombre: 'Franco',
+    apellido: 'Morini',
+    email: 'fm@gmail.com',
   },
   {
-    nombre:'Hugo',
-    apellido:'Bustos',
-    email:'hb@gmail.com'
+    nombre: 'Hugo',
+    apellido: 'Bustos',
+    email: 'hb@gmail.com',
   },
   {
-    nombre:'Elias',
-    apellido:'Cuevas',
-    email:'ec@gmail.com'
-  }
-  
-]
+    nombre: 'Elias',
+    apellido: 'Cuevas',
+    email: 'ec@gmail.com',
+  },
+];
 @Component({
   selector: 'app-usuarios-page',
   templateUrl: './usuarios-page.component.html',
-  styleUrls: ['./usuarios-page.component.scss']
+  styleUrls: ['./usuarios-page.component.scss'],
 })
 export class UsuariosPageComponent implements OnInit {
-  displayedColumns: string[] = ['nombre', 'apellido','email','editar','eliminar'];
-  data:any[] = DATA;
-  columnas= ['nombre','apellido','email','actualizado'];
-  botonesTabla = [buttons.editar,buttons.eliminar];
+  displayedColumns: string[] = [
+    'nombre',
+    'apellido',
+    'email',
+    'editar',
+    'eliminar',
+  ];
+  data: any[] = DATA;
+  columnas = ['nombre', 'apellido', 'email', 'actualizado'];
+  botonesTabla = [buttons.editar, buttons.eliminar];
   @ViewChild('scroll') formDiv: ElementRef;
-  @ViewChild('form') form: FormUsuariosComponent
-  constructor() { }
+  @ViewChild('form') form: FormUsuariosComponent;
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  clickEnBotonFila(evento:any):void {
+  clickEnBotonFila(evento: any): void {
     switch (evento.button.name) {
       case 'editar':
         this.editarUsuario(evento.fila);
@@ -57,20 +61,18 @@ export class UsuariosPageComponent implements OnInit {
       default:
         break;
     }
-    console.log(evento.fila)
+    console.log(evento.fila);
   }
-  eliminarUsuario(fila:any) : void {
+  eliminarUsuario(fila: any): void {
     console.log('eliminado');
   }
-  editarUsuario(fila:any): void {
+  editarUsuario(fila: any): void {
     this.form.mapearValores(fila);
-    this.form.titulo = "Editar Reporte",
-    this.form.modo = 'editar';
+    (this.form.titulo = 'Editar Usuario'), (this.form.modo = 'editar');
     this.scroll();
   }
 
   scroll() {
-    this.formDiv.nativeElement.scrollIntoView({behavior: 'smooth'});
+    this.formDiv.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
-
 }

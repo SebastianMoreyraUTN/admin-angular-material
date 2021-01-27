@@ -1,71 +1,69 @@
-<mat-card>
-    <mat-card-title>
-        <h6>Grupo de permisos para el usuario</h6>
-    </mat-card-title>
-    <mat-card-content>
-        <div class="row">
-            <div class="col-6">
-                <div class="col-12">
-                    <button class="boton-todos" mat-raised-button (click)="seleccionarTodos()" color="primary">
-            Seleccionar todos
-            <mat-icon class="icon-todos">keyboard_arrow_right</mat-icon>
+<div class="multiselect">
+    <mat-toolbar class="multiselect-header">
+        <span>Grupos de permisos para el Usuario</span>
+    </mat-toolbar>
+    <div class="row">
+        <div class="col-6">
+            <div class="col-12">
+                <button class="boton-todos" mat-raised-button (click)="seleccionarTodos()" color="primary">
+          Seleccionar todos
+          <mat-icon class="icon-todos">keyboard_arrow_right</mat-icon>
+        </button>
+                <mat-form-field appearance="outline">
+                    <mat-label>Filtrar</mat-label>
+                    <input type="text" #filtroIzquierda placeholder="" (keyup)="aplicarFiltroIzquierda(filtroIzquierda.value)" aria-label="Filtrar" matInput />
+                    <button mat-button *ngIf="filtroIzquierda.value" matSuffix mat-icon-button aria-label="Borrar" (click)="limpiarFiltro(filtroIzquierda)">
+            <mat-icon>close</mat-icon>
           </button>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Filtrar</mat-label>
-                        <input type="text" #filtroIzquierda placeholder="" (keyup)="aplicarFiltroIzquierda(filtroIzquierda.value)" aria-label="Filtrar" matInput />
-                        <button mat-button *ngIf="filtroIzquierda.value" matSuffix mat-icon-button aria-label="Borrar" (click)="limpiarFiltro(filtroIzquierda)">
-              <mat-icon>close</mat-icon>
-            </button>
-                    </mat-form-field>
-                    <div class="contenedor-items">
-                        <mat-selection-list [multiple]="false" *ngIf="!mostrarFiltradosIzquierda">
-                            <mat-list-option class="animate__animated animate__fadeIn" (click)="seleccionarItem(item)" *ngFor="let item of items" [value]="item">
-                                <mat-icon matListIcon>east</mat-icon>
-                                <h3 matLine>{{ item }}</h3>
-                                <mat-divider></mat-divider>
-                            </mat-list-option>
-                        </mat-selection-list>
-                        <mat-selection-list [multiple]="false" *ngIf="mostrarFiltradosIzquierda">
-                            <mat-list-option (click)="seleccionarItem(f)" *ngFor="let f of filtradosIzquierda" [value]="f">
-                                <mat-icon matListIcon>east</mat-icon>
-                                <h3 matLine>{{ f }}</h3>
-                                <mat-divider></mat-divider>
-                            </mat-list-option>
-                        </mat-selection-list>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="col-12">
-                    <button mat-raised-button class="boton-todos" (click)="quitarTodos()" color="warn">
-            Quitar todos
-            <mat-icon class="icon-todos">keyboard_arrow_left</mat-icon>
-          </button>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Filtrar</mat-label>
-                        <input type="text" placeholder="" #filtroDerecha aria-label="Filtrar" matInput (keyup)="aplicarFiltroDerecha(filtroDerecha.value)" />
-                        <button mat-button *ngIf="filtroDerecha.value" matSuffix mat-icon-button aria-label="Borrar" (click)="limpiarFiltro(null, filtroDerecha)">
-              <mat-icon>close</mat-icon>
-            </button>
-                    </mat-form-field>
-                    <div class="contenedor-items">
-                        <mat-selection-list [multiple]="false" *ngIf="!mostrarFiltradosDerecha">
-                            <mat-list-option class="animate__animated animate__fadeIn" (click)="quitarItem(s)" *ngFor="let s of seleccionados" [value]="s">
-                                <mat-icon matListIcon>west</mat-icon>
-                                <h3 matLine>{{ s }}</h3>
-                                <mat-divider></mat-divider>
-                            </mat-list-option>
-                        </mat-selection-list>
-                        <mat-selection-list [multiple]="false" *ngIf="mostrarFiltradosDerecha">
-                            <mat-list-option (click)="quitarItem(item)" *ngFor="let item of filtradosDerecha" [value]="item">
-                                <mat-icon matListIcon>west</mat-icon>
-                                <h3 matLine>{{ item }}</h3>
-                                <mat-divider></mat-divider>
-                            </mat-list-option>
-                        </mat-selection-list>
-                    </div>
+                </mat-form-field>
+                <div class="contenedor-items">
+                    <mat-selection-list [multiple]="false" *ngIf="!mostrarFiltradosIzquierda">
+                        <mat-list-option class="animate__animated animate__fadeIn" (click)="seleccionarItem(item)" *ngFor="let item of items" [value]="item">
+                            <mat-icon matListIcon>east</mat-icon>
+                            <h3 matLine>{{ item }}</h3>
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+                    </mat-selection-list>
+                    <mat-selection-list [multiple]="false" *ngIf="mostrarFiltradosIzquierda">
+                        <mat-list-option (click)="seleccionarItem(f)" *ngFor="let f of filtradosIzquierda" [value]="f">
+                            <mat-icon matListIcon>east</mat-icon>
+                            <h3 matLine>{{ f }}</h3>
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+                    </mat-selection-list>
                 </div>
             </div>
         </div>
-    </mat-card-content>
-</mat-card>
+        <div class="col-6">
+            <div class="col-12">
+                <button mat-raised-button class="boton-todos" (click)="quitarTodos()" color="warn">
+          Quitar todos
+          <mat-icon class="icon-todos">keyboard_arrow_left</mat-icon>
+        </button>
+                <mat-form-field appearance="outline">
+                    <mat-label>Filtrar</mat-label>
+                    <input type="text" placeholder="" #filtroDerecha aria-label="Filtrar" matInput (keyup)="aplicarFiltroDerecha(filtroDerecha.value)" />
+                    <button mat-button *ngIf="filtroDerecha.value" matSuffix mat-icon-button aria-label="Borrar" (click)="limpiarFiltro(null, filtroDerecha)">
+            <mat-icon>close</mat-icon>
+          </button>
+                </mat-form-field>
+                <div class="contenedor-items">
+                    <mat-selection-list [multiple]="false" *ngIf="!mostrarFiltradosDerecha">
+                        <mat-list-option class="animate__animated animate__fadeIn" (click)="quitarItem(s)" *ngFor="let s of seleccionados" [value]="s">
+                            <mat-icon matListIcon>west</mat-icon>
+                            <h3 matLine>{{ s }}</h3>
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+                    </mat-selection-list>
+                    <mat-selection-list [multiple]="false" *ngIf="mostrarFiltradosDerecha">
+                        <mat-list-option (click)="quitarItem(item)" *ngFor="let item of filtradosDerecha" [value]="item">
+                            <mat-icon matListIcon>west</mat-icon>
+                            <h3 matLine>{{ item }}</h3>
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+                    </mat-selection-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

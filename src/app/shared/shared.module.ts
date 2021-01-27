@@ -21,6 +21,7 @@ import { MatCardModule } from '@angular/material/card';
 import { DualMultiselectComponent } from './dual-multiselect/dual-multiselect.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { MatInputModule } from '@angular/material/input';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatToolbarModule,
   ],
   exports: [
     HeaderModule,

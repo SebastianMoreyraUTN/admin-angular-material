@@ -2,7 +2,6 @@
     <mat-toolbar class="page-header" role="heading">
         <h1>Usuarios</h1>
     </mat-toolbar>
-    <app-dual-multiselect></app-dual-multiselect>
     <app-table (clickBoton)="clickEnBotonFila($event)" [data]="data" [displayedColumns]="displayedColumns" [columnas]="columnas" [buttons]="botonesTabla"></app-table>
     <div #scroll class="row">
         <app-form-usuarios #form></app-form-usuarios>
