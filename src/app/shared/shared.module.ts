@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { HeaderModule } from './header/header.module';
@@ -18,6 +18,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
+import { DualMultiselectComponent } from './dual-multiselect/dual-multiselect.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -25,7 +28,8 @@ import { MatCardModule } from '@angular/material/card';
     SidebarComponent,
     FooterComponent,
     LayoutComponent,
-    TableComponent
+    TableComponent,
+    DualMultiselectComponent
   ],
   imports: [
     HeaderModule,
@@ -37,18 +41,22 @@ import { MatCardModule } from '@angular/material/card';
     MatMenuModule,
     MatSelectModule,
     FormsModule,
+    ReactiveFormsModule,
     MatSidenavModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
     HeaderModule,
     SidebarComponent,
     FooterComponent,
     LayoutComponent,
-    TableComponent
+    TableComponent,
+    DualMultiselectComponent
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,41 @@
+<mat-card>
+    <mat-card-title>
+        <h6>Grupo de permisos para el usuario</h6>
+    </mat-card-title>
+    <mat-card-content>
+        <div class="row">
+            <div class="col-6">
+                <div class="col-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Filtrar</mat-label>
+                        <input type="text" placeholder="" aria-label="Filtrar" matInput [formControl]="filtroIzquierda">
+                    </mat-form-field>
+                    <mat-card class="contenedor-items">
+                        <mat-selection-list #shoes [multiple]="false">
+                            <mat-list-option (click)="seleccionarItem(item)" *ngFor="let item of items" [value]="item">
+                                <mat-icon matListIcon>east</mat-icon>
+                                <h3 matLine>{{item}}</h3>
+                            </mat-list-option>
+                        </mat-selection-list>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="col-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Filtrar</mat-label>
+                        <input type="text" placeholder="" aria-label="Filtrar" matInput [formControl]="filtroIzquierda">
+                    </mat-form-field>
+                    <mat-card class="contenedor-items">
+                        <mat-selection-list #shoes [multiple]="false">
+                            <mat-list-option (click)="quitarItem(s)" *ngFor="let s of seleccionados" [value]="s">
+                                <mat-icon matListIcon>west</mat-icon>
+                                <h3 matLine>{{s}}</h3>
+                            </mat-list-option>
+                        </mat-selection-list>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
