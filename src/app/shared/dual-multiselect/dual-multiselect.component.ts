@@ -9,6 +9,12 @@ import { map, startWith } from 'rxjs/operators';
   styleUrls: ['./dual-multiselect.component.scss'],
 })
 export class DualMultiselectComponent implements OnInit {
+  /*
+    La propiedad items define las opciones sobre las que 
+    va a trabajar este componente. El componente padre que
+    utilice multiselect deberá pasarle el conjunto de opciones
+    que desee. 
+  */
   @Input() items: string[] = [];
   seleccionados: string[] = [];
   filtroIzquierda = new FormControl('');
@@ -19,7 +25,9 @@ export class DualMultiselectComponent implements OnInit {
 
   ngOnInit(): void {
     this.filtradosIzquierda = this.filtroIzquierda.valueChanges.pipe(
+      /*Utilizo startWith para emitir en un principio el valor '' */
       startWith(''),
+      /* El map va a aplicar el método filtrar para cada valor emitido*/
       map((valor) => this.filtrar(valor, this.items))
     );
 

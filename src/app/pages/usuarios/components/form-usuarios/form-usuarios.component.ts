@@ -22,7 +22,7 @@ export class FormUsuariosComponent implements OnInit {
   usuarioForm = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     apellido: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
   });
   titulo: string = 'Crear Usuario';
   modo: string = 'crear';
@@ -34,6 +34,9 @@ export class FormUsuariosComponent implements OnInit {
   mostrarError(formControl) {
     if (formControl.hasError('required')) {
       return 'Debe ingresar un valor';
+    }
+    if (formControl.hasError('email')) {
+      return 'Debe ingresar un formato de email válido';
     }
   }
 
