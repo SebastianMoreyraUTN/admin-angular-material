@@ -4,9 +4,9 @@
     </mat-toolbar>
     <app-table (clickBoton)="clickEnBotonFila($event)" [data]="data" [displayedColumns]="displayedColumns" [columnas]="columnas" [buttons]="botonesTabla">
         <div>
-            <button (click)="nuevoUsuario()" class="nuevo-usuario-button" mat-raised-button color="primary">
-        Nuevo Usuario
-        <mat-icon class="nuevo-usuario-icon">person_add</mat-icon>
+            <button (click)="nuevoUsuario()" class="nuevo-button" mat-raised-button color="primary">
+        <span class="esconder">Nuevo Usuario</span>
+        <mat-icon class="nuevo-icon">person_add</mat-icon>
       </button>
         </div>
     </app-table>

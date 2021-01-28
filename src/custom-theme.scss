@@ -311,3 +311,21 @@ button {
 ::-webkit-resizer {
     background-color: $dark-grey;
 }
+
+.nuevo-icon {
+    margin-bottom: 5px !important;
+    margin-left: 10px !important;
+}
+
+.nuevo-button {
+    background-color: #58e13d !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .esconder {
+        display: none;
+    }
+    .nuevo-icon {
+        margin-left: 0px !important;
+    }
+}

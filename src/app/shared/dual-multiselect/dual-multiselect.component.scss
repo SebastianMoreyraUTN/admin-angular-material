@@ -39,3 +39,10 @@ mat-form-field {
 .row {
     margin: 10px;
 }
+
+@media only screen and (max-width: 576px) {
+    .col-12 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}

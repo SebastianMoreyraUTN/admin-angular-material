@@ -58,6 +58,8 @@ export class FormUsuariosComponent implements OnInit {
 
   limpiarValores() {
     this.usuarioForm.reset();
+    this.titulo = 'Crear Usuario';
+    this.modo = 'crear';
     console.log(this.usuarioForm.value);
   }
 
