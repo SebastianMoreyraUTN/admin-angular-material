@@ -3,12 +3,14 @@
         <span>Grupos de permisos</span>
     </mat-toolbar>
     <div class="row">
+        <!-- Parte izquierda del multiselect -->
         <div class="col-md-6 col-12">
             <div class="col-12">
                 <button class="boton-todos" mat-raised-button (click)="seleccionarTodos()" color="primary">
           Seleccionar todos
           <mat-icon class="icon-todos">keyboard_arrow_right</mat-icon>
         </button>
+                <!-- Filtro Izquierda -->
                 <mat-form-field appearance="outline">
                     <mat-label>Filtrar</mat-label>
                     <input type="text" #filtroIzquierda placeholder="" (keyup)="aplicarFiltroIzquierda(filtroIzquierda.value)" aria-label="Filtrar" matInput />
@@ -16,6 +18,8 @@
             <mat-icon>close</mat-icon>
           </button>
                 </mat-form-field>
+
+                <!-- Lista de items para seleccionar a la izquierda -->
                 <div class="contenedor-items">
                     <mat-selection-list [multiple]="false" *ngIf="!mostrarFiltradosIzquierda">
                         <mat-list-option class="animate__animated animate__fadeIn" (click)="seleccionarItem(item)" *ngFor="let item of items" [value]="item">
@@ -34,12 +38,15 @@
                 </div>
             </div>
         </div>
+
+        <!-- Parte Derecha del Multiselect -->
         <div class="col-md-6 col-12">
             <div class="col-12">
                 <button mat-raised-button class="boton-todos" (click)="quitarTodos()" color="warn">
           Quitar todos
           <mat-icon class="icon-todos">keyboard_arrow_left</mat-icon>
         </button>
+                <!-- Filtro Derecha-->
                 <mat-form-field appearance="outline">
                     <mat-label>Filtrar</mat-label>
                     <input type="text" placeholder="" #filtroDerecha aria-label="Filtrar" matInput (keyup)="aplicarFiltroDerecha(filtroDerecha.value)" />
@@ -47,6 +54,7 @@
             <mat-icon>close</mat-icon>
           </button>
                 </mat-form-field>
+                <!-- Lista de items seleccionados -->
                 <div class="contenedor-items">
                     <mat-selection-list [multiple]="false" *ngIf="!mostrarFiltradosDerecha">
                         <mat-list-option class="animate__animated animate__fadeIn" (click)="quitarItem(s)" *ngFor="let s of seleccionados" [value]="s">
