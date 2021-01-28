@@ -45,15 +45,7 @@ export class FormUsuariosComponent implements OnInit {
       apellido: fila.apellido,
       email: fila.email,
     });
-    this.multiselect.seleccionados = fila.grupos;
-    this.multiselect.items = this.multiselect.items.filter((i) => {
-      for (let index = 0; index < fila.grupos.length; index++) {
-        if (i === fila.grupos[index]) {
-          return false;
-        }
-      }
-      return true;
-    });
+    this.multiselect.mapearValores(fila.grupos);
   }
 
   limpiarValores() {
