@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTab, MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [UsuariosPageComponent, FormUsuariosComponent],
@@ -27,6 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
+    MatTabsModule,
   ],
 })
 export class UsuariosModule {}

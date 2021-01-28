@@ -3,12 +3,22 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { DualMultiselectComponent } from '../../../../shared/dual-multiselect/dual-multiselect.component';
 
+const GRUPOS = [
+  'desarrollo',
+  'soporte',
+  'comercial',
+  'riesgo',
+  'operaciones',
+  'gerencia',
+];
+
 @Component({
   selector: 'app-form-usuarios',
   templateUrl: './form-usuarios.component.html',
   styleUrls: ['./form-usuarios.component.scss'],
 })
 export class FormUsuariosComponent implements OnInit {
+  grupos: any[] = GRUPOS;
   usuarioForm = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     apellido: new FormControl('', [Validators.required]),
@@ -28,11 +38,27 @@ export class FormUsuariosComponent implements OnInit {
   }
 
   mapearValores(fila: any): void {
+    this.titulo = 'Editar Usuario';
+    this.modo = 'editar';
     this.usuarioForm.patchValue({
       nombre: fila.nombre,
       apellido: fila.apellido,
       email: fila.email,
     });
+    this.multiselect.seleccionados = fila.grupos;
+    this.multiselect.items = this.multiselect.items.filter((i) => {
+      for (let index = 0; index < fila.grupos.length; index++) {
+        if (i === fila.grupos[index]) {
+          return false;
+        }
+      }
+      return true;
+    });
+  }
+
+  limpiarValores() {
+    this.usuarioForm.reset();
+    console.log(this.usuarioForm.value);
   }
 
   guardarUsuario() {

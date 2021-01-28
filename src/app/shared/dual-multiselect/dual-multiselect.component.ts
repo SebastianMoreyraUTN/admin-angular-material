@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -7,14 +7,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./dual-multiselect.component.scss'],
 })
 export class DualMultiselectComponent implements OnInit {
-  items: string[] = [
-    'Comercial',
-    'Desarrollo',
-    'Soporte',
-    'Operaciones',
-    'RRHH',
-    'Riesgo',
-  ];
+  @Input() items: string[] = [];
   seleccionados: string[] = [];
   filtradosIzquierda: string[] = [];
   mostrarFiltradosIzquierda: boolean = false;

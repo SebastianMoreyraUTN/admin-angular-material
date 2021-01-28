@@ -4,36 +4,38 @@
             <div class="table-wrapper__icon-wrapper">
                 <mat-icon class="table-wrapper__icon">search</mat-icon>
             </div>
-            <input matInput class="table-wrapper__search-input" (keyup)="applyFilter($event)">
+            <input matInput class="table-wrapper__search-input" (keyup)="applyFilter($event)" />
         </div>
+        <ng-content></ng-content>
     </mat-card-title>
 
     <mat-card-content class="table__content">
         <table class="table__table" mat-table [dataSource]="dataSource" matSort>
-
             <!-- Botones -->
 
             <ng-container *ngFor="let button of buttons" [matColumnDef]="button.name">
                 <th class="table__table-header" mat-header-cell *matHeaderCellDef>
-                    {{button.name | titlecase}}
+                    {{ button.name | titlecase }}
                 </th>
                 <td class="table__table-body" mat-cell *matCellDef="let row">
-                    <button mat-icon-button [ngStyle]="{'color': button.color}" (click)="emitirEvento(row,button)">
-                            <mat-icon>{{button.icon}}</mat-icon>
-                          </button>
+                    <button mat-icon-button [ngStyle]="{ color: button.color }" (click)="emitirEvento(row, button)">
+            <mat-icon>{{ button.icon }}</mat-icon>
+          </button>
                 </td>
             </ng-container>
 
             <!-- Columnas -->
             <ng-container *ngFor="let columna of columnas" [matColumnDef]="columna">
-                <th class="table__table-header" mat-header-cell *matHeaderCellDef mat-sort-header>{{columna | titlecase}}</th>
-                <td class="table__table-body" mat-cell *matCellDef="let element"> {{element[columna]}} </td>
+                <th class="table__table-header" mat-header-cell *matHeaderCellDef mat-sort-header>
+                    {{ columna | titlecase }}
+                </th>
+                <td class="table__table-body" mat-cell *matCellDef="let element">
+                    {{ element[columna] }}
+                </td>
             </ng-container>
 
-
-
             <tr mat-header-row *matHeaderRowDef="displayedColumns" sticky></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
     </mat-card-content>
     <div class="pagination">

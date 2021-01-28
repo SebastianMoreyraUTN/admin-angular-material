@@ -6,11 +6,13 @@ const DATA = [
     nombre: 'Sebastian',
     apellido: 'Moreyra',
     email: 'sm@gmail.com',
+    grupos: ['desarrollo', 'soporte'],
   },
   {
     nombre: 'Alan',
     apellido: 'Pieckenstainer',
     email: 'a@gmail.com',
+    grupos: ['rrhh', 'comercial'],
   },
   {
     nombre: 'Franco',
@@ -68,7 +70,11 @@ export class UsuariosPageComponent implements OnInit {
   }
   editarUsuario(fila: any): void {
     this.form.mapearValores(fila);
-    (this.form.titulo = 'Editar Usuario'), (this.form.modo = 'editar');
+    this.scroll();
+  }
+
+  nuevoUsuario() {
+    this.form.limpiarValores();
     this.scroll();
   }
 

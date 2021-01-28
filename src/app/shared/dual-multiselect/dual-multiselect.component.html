@@ -20,14 +20,14 @@
                     <mat-selection-list [multiple]="false" *ngIf="!mostrarFiltradosIzquierda">
                         <mat-list-option class="animate__animated animate__fadeIn" (click)="seleccionarItem(item)" *ngFor="let item of items" [value]="item">
                             <mat-icon matListIcon>east</mat-icon>
-                            <h3 matLine>{{ item }}</h3>
+                            <h3 matLine>{{ item | titlecase }}</h3>
                             <mat-divider></mat-divider>
                         </mat-list-option>
                     </mat-selection-list>
                     <mat-selection-list [multiple]="false" *ngIf="mostrarFiltradosIzquierda">
                         <mat-list-option (click)="seleccionarItem(f)" *ngFor="let f of filtradosIzquierda" [value]="f">
                             <mat-icon matListIcon>east</mat-icon>
-                            <h3 matLine>{{ f }}</h3>
+                            <h3 matLine>{{ f | titlecase }}</h3>
                             <mat-divider></mat-divider>
                         </mat-list-option>
                     </mat-selection-list>
@@ -51,14 +51,14 @@
                     <mat-selection-list [multiple]="false" *ngIf="!mostrarFiltradosDerecha">
                         <mat-list-option class="animate__animated animate__fadeIn" (click)="quitarItem(s)" *ngFor="let s of seleccionados" [value]="s">
                             <mat-icon matListIcon>west</mat-icon>
-                            <h3 matLine>{{ s }}</h3>
+                            <h3 matLine>{{ s | titlecase }}</h3>
                             <mat-divider></mat-divider>
                         </mat-list-option>
                     </mat-selection-list>
                     <mat-selection-list [multiple]="false" *ngIf="mostrarFiltradosDerecha">
                         <mat-list-option (click)="quitarItem(item)" *ngFor="let item of filtradosDerecha" [value]="item">
                             <mat-icon matListIcon>west</mat-icon>
-                            <h3 matLine>{{ item }}</h3>
+                            <h3 matLine>{{ item | titlecase }}</h3>
                             <mat-divider></mat-divider>
                         </mat-list-option>
                     </mat-selection-list>
