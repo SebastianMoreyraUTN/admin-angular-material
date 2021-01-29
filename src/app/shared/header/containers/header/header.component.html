@@ -1,9 +1,12 @@
-<mat-toolbar class="header">
-
+<mat-toolbar color="primary" class="header mat-elevation-z24">
     <div class="header__title">
-        <button class="header__title-button" mat-mini-fab (click)="openMenu()">
-      <mat-icon *ngIf="!isMenuOpened" class="header__title-button-icon">menu</mat-icon>
-      <mat-icon *ngIf="isMenuOpened" class="header__title-button-icon">arrow_back</mat-icon>
+        <button color="primary" class="header__title-button" mat-mini-fab (click)="openMenu()">
+      <mat-icon *ngIf="!isMenuOpened" class="header__title-button-icon"
+        >menu</mat-icon
+      >
+      <mat-icon *ngIf="isMenuOpened" class="header__title-button-icon"
+        >arrow_back</mat-icon
+      >
     </button>
         <h6 class="header__title-text">Reporting V2</h6>
     </div>
@@ -11,5 +14,4 @@
     <div class="header-toolbar">
         <app-user [user]="user$ | async" (signOut)="signOut()"></app-user>
     </div>
-
 </mat-toolbar>

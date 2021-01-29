@@ -30,6 +30,19 @@ $ama-accent: mat-palette($ama-yellow);
 $ama-warn: mat-palette($mat-red);
 $ama-theme: mat-light-theme($ama-primary, $ama-accent, $ama-warn);
 @include angular-material-theme($ama-theme);
+$candy-app-primary: mat-palette($mat-indigo);
+$candy-app-accent: mat-palette($mat-pink, A200, A100, A400);
+$candy-app-warn: mat-palette($mat-red);
+$candy-app-theme: mat-light-theme( $candy-app-primary, $candy-app-accent, $candy-app-warn);
+@include angular-material-theme($candy-app-theme);
+.dark-theme {
+    $primary-dark: mat-palette($mat-deep-purple);
+    $accent-dark: mat-palette($mat-green);
+    $warn-dark: mat-palette($mat-red);
+    $theme-dark: mat-dark-theme($primary-dark, $accent-dark, $warn-dark);
+    @include angular-material-theme($theme-dark);
+}
+
 button.mat-menu-item {
     font-size: 16px;
 }
@@ -155,11 +168,31 @@ button.mat-fab .mat-button-wrapper {
     color: $card-title-font-color;
 }
 
+.dark-theme .mat-toolbar {
+    background: #31313c;
+    color: white;
+}
+
+.dark-theme .mat-icon {
+    color: #d5dbdb !important;
+}
+
+.dark-theme .mat-flat-button.mat-accent,
+.dark-theme .mat-raised-button.mat-accent,
+.dark-theme .mat-fab.mat-accent,
+.dark-theme .mat-mini-fab.mat-accent {
+    background-color: #536dfe !important;
+}
+
+.dark-theme .mat-fab:not([class*="mat-elevation-z"]),
+.dark-theme .mat-mini-fab:not([class*="mat-elevation-z"]) {
+    box-shadow: none !important;
+}
+
 mat-toolbar.page-header {
     display: flex;
     justify-content: space-between;
     padding: 24px 24px 16px 16px;
-    background: none;
     height: auto;
     @media (max-width: $small) {
         flex-direction: column;
@@ -328,4 +361,52 @@ button {
     .nuevo-icon {
         margin-left: 0px !important;
     }
+}
+
+.dark-theme .mat-list-base .mat-list-item:hover {
+    background-color: #13131a !important;
+}
+
+.dark-theme .mat-list-base .mat-list-item {
+    color: #d5dbdb !important;
+}
+
+.dark-theme .mat-list-base .mat-list-item.active {
+    background-color: #23232d !important;
+    color: $sidebar-icon-color-active !important;
+}
+
+.dark-theme .mat-icon .active {
+    color: $sidebar-icon-color-active !important;
+}
+
+.dark-theme .mat-drawer {
+    background-color: #31313c !important;
+    color: white !important;
+}
+
+.dark-theme .mat-drawer-container {
+    background-color: #31313c !important;
+    color: white !important;
+}
+
+.dark-theme .mat-card {
+    color: white;
+    background-color: #23232d;
+}
+
+.dark-theme mat-row,
+.dark-theme mat-header-row,
+.dark-theme mat-footer-row,
+.dark-theme th.mat-header-cell,
+.dark-theme td.mat-cell,
+.dark-theme td.mat-footer-cell {
+    border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+    background-color: #23232d !important;
+}
+
+.dark-theme .mat-paginator,
+.dark-theme .mat-paginator-page-size .mat-select-trigger {
+    color: rgba(255, 255, 255, 0.7);
+    background-color: #23232d;
 }
