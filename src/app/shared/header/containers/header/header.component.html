@@ -8,9 +8,13 @@
         >arrow_back</mat-icon
       >
     </button>
-        <h6 class="header__title-text">Reporting V2</h6>
+        <h3 class="header__title-text">Reporting V2</h3>
     </div>
-
+    <div>
+        <mat-slide-toggle [(ngModel)]="isChecked" (toggleChange)="cambiarTema()" color="warn">
+            {{ tema }}
+        </mat-slide-toggle>
+    </div>
     <div class="header-toolbar">
         <app-user [user]="user$ | async" (signOut)="signOut()"></app-user>
     </div>

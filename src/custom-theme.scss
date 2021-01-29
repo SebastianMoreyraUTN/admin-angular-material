@@ -168,27 +168,6 @@ button.mat-fab .mat-button-wrapper {
     color: $card-title-font-color;
 }
 
-.dark-theme .mat-toolbar {
-    background: #31313c;
-    color: white;
-}
-
-.dark-theme .mat-icon {
-    color: #d5dbdb !important;
-}
-
-.dark-theme .mat-flat-button.mat-accent,
-.dark-theme .mat-raised-button.mat-accent,
-.dark-theme .mat-fab.mat-accent,
-.dark-theme .mat-mini-fab.mat-accent {
-    background-color: #536dfe !important;
-}
-
-.dark-theme .mat-fab:not([class*="mat-elevation-z"]),
-.dark-theme .mat-mini-fab:not([class*="mat-elevation-z"]) {
-    box-shadow: none !important;
-}
-
 mat-toolbar.page-header {
     display: flex;
     justify-content: space-between;
@@ -363,6 +342,27 @@ button {
     }
 }
 
+.dark-theme .mat-toolbar {
+    background: #31313c;
+    color: white;
+}
+
+.dark-theme .mat-icon {
+    color: #d5dbdb !important;
+}
+
+.dark-theme .mat-flat-button.mat-accent,
+.dark-theme .mat-raised-button.mat-accent,
+.dark-theme .mat-fab.mat-accent,
+.dark-theme .mat-mini-fab.mat-accent {
+    background-color: #536dfe !important;
+}
+
+.dark-theme .mat-fab:not([class*="mat-elevation-z"]),
+.dark-theme .mat-mini-fab:not([class*="mat-elevation-z"]) {
+    box-shadow: none !important;
+}
+
 .dark-theme .mat-list-base .mat-list-item:hover {
     background-color: #13131a !important;
 }
@@ -376,7 +376,8 @@ button {
     color: $sidebar-icon-color-active !important;
 }
 
-.dark-theme .mat-icon .active {
+.dark-theme .mat-list-base .mat-list-item.active .mat-icon {
+    background-color: #23232d !important;
     color: $sidebar-icon-color-active !important;
 }
 
@@ -409,4 +410,22 @@ button {
 .dark-theme .mat-paginator-page-size .mat-select-trigger {
     color: rgba(255, 255, 255, 0.7);
     background-color: #23232d;
+}
+
+.dark-theme .user-menu-title__name {
+    color: #d5dbdb !important;
+}
+
+.dark-theme .mat-menu-item:hover:not([disabled]),
+.dark-theme .mat-menu-item.cdk-program-focused:not([disabled]),
+.dark-theme .mat-menu-item.cdk-keyboard-focused:not([disabled]),
+.dark-theme .mat-menu-item-highlighted:not([disabled]) {
+    color: #d5dbdb !important;
+    background-color: #13131a !important;
+}
+
+.dark-theme .mat-menu-content:not(:empty) {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: #31313c;
 }

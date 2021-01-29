@@ -7,21 +7,17 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { HeaderComponent } from './containers';
-import { UserComponent} from './components';
+import { UserComponent } from './components';
 
 import { ShortNamePipe } from './pipes';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    UserComponent,
-    ShortNamePipe
-  ],
-  exports: [
-    HeaderComponent
-  ],
+  declarations: [HeaderComponent, UserComponent, ShortNamePipe],
+  exports: [HeaderComponent],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -30,7 +26,9 @@ import { ShortNamePipe } from './pipes';
     MatMenuModule,
     MatButtonModule,
     MatInputModule,
-    MatBadgeModule
-  ]
+    MatBadgeModule,
+    MatSlideToggleModule,
+    FormsModule,
+  ],
 })
-export class HeaderModule { }
+export class HeaderModule {}
