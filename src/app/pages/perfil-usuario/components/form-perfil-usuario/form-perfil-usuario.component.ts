@@ -13,6 +13,8 @@ export class FormPerfilUsuarioComponent implements OnInit {
     nombre: new FormControl('', [Validators.required]),
     apellido: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+    confirmarPassword: new FormControl('', [Validators.required]),
   });
   isChecked: boolean = false;
   tema: string;
@@ -48,6 +50,20 @@ export class FormPerfilUsuarioComponent implements OnInit {
 
   guardarUsuario() {
     console.log(this.usuarioForm.value);
+    if (
+      this.usuarioForm.get('password').value !=
+      this.usuarioForm.get('confirmarPassword').value
+    ) {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Oops',
+        text: 'Las contraseñas deben coincidir',
+        showConfirmButton: true,
+        showCloseButton: true,
+      });
+      return;
+    }
     Swal.fire({
       position: 'center',
       icon: 'success',

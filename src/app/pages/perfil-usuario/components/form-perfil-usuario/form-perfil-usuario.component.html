@@ -1,61 +1,114 @@
 <div class="col-md-2 col-12 col-sm-6">
-    <mat-card class="mat-elevation-z10">
-        <mat-card-title>
-            <div class="tema">
-                <mat-slide-toggle [(ngModel)]="isChecked" (toggleChange)="cambiarTema()" color="warn">
-                    {{ tema }}
-                </mat-slide-toggle>
+  <mat-card class="mat-elevation-z10">
+    <mat-card-title>
+      <div class="tema">
+        <mat-slide-toggle
+          [(ngModel)]="isChecked"
+          (toggleChange)="cambiarTema()"
+          color="warn"
+        >
+          {{ tema }}
+        </mat-slide-toggle>
 
-                <mat-icon class="tema-icon">
-                    {{ mostrarIcono() }}
-                </mat-icon>
-            </div>
-        </mat-card-title>
-    </mat-card>
+        <mat-icon class="tema-icon">
+          {{ mostrarIcono() }}
+        </mat-icon>
+      </div>
+    </mat-card-title>
+  </mat-card>
 </div>
 <div class="col-sm-12 col-lg-6">
-    <mat-card class="mat-elevation-z10">
-        <mat-card-title #elemento>
-            <h3>
-                <mat-icon>person</mat-icon>
-                Editar
-            </h3>
-        </mat-card-title>
-        <mat-card-content>
-            <form [formGroup]="usuarioForm">
-                <div class="row">
-                    <div class="col-12">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Nombre</mat-label>
-                            <input #input formControlName="nombre" maxlength="16" matInput placeholder="Placeholder" />
-                            <mat-error *ngIf="usuarioForm.controls.nombre.invalid">{{ mostrarError(usuarioForm.controls.nombre) }}
-                            </mat-error>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-12">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Apellido</mat-label>
-                            <input #input formControlName="apellido" maxlength="16" matInput placeholder="Placeholder" />
-                            <mat-error *ngIf="usuarioForm.controls.apellido.invalid">{{ mostrarError(usuarioForm.controls.apellido) }}
-                            </mat-error>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-12">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Email</mat-label>
-                            <input #input formControlName="email" maxlength="16" matInput placeholder="Placeholder" />
-                            <mat-error *ngIf="usuarioForm.controls.email.invalid">{{ mostrarError(usuarioForm.controls.email) }}
-                            </mat-error>
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-end">
-                    <button type="submit" (click)="guardarUsuario()" [disabled]="usuarioForm.invalid" mat-raised-button color="primary">
+  <mat-card class="mat-elevation-z10">
+    <mat-card-title #elemento>
+      <h3>
+        <mat-icon>person</mat-icon>
+        Editar
+      </h3>
+    </mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="usuarioForm">
+        <div class="row">
+          <div class="col-12">
+            <mat-form-field appearance="outline">
+              <mat-label>Nombre</mat-label>
+              <input
+                #input
+                formControlName="nombre"
+                maxlength="16"
+                matInput
+                placeholder="Placeholder"
+              />
+              <mat-error *ngIf="usuarioForm.controls.nombre.invalid"
+                >{{ mostrarError(usuarioForm.controls.nombre) }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-12">
+            <mat-form-field appearance="outline">
+              <mat-label>Apellido</mat-label>
+              <input
+                #input
+                formControlName="apellido"
+                maxlength="16"
+                matInput
+                placeholder="Placeholder"
+              />
+              <mat-error *ngIf="usuarioForm.controls.apellido.invalid"
+                >{{ mostrarError(usuarioForm.controls.apellido) }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-12">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+                #input
+                formControlName="email"
+                maxlength="16"
+                matInput
+                placeholder="ejemplo@mail.com"
+              />
+              <mat-error *ngIf="usuarioForm.controls.email.invalid"
+                >{{ mostrarError(usuarioForm.controls.email) }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-12">
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input
+                type="password"
+                #input
+                formControlName="password"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-12">
+            <mat-form-field appearance="outline">
+              <mat-label>Confirmar Password</mat-label>
+              <input
+                type="password"
+                #input
+                formControlName="confirmarPassword"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button
+            type="submit"
+            (click)="guardarUsuario()"
+            [disabled]="usuarioForm.invalid"
+            mat-raised-button
+            color="primary"
+          >
             <mat-icon class="save-icon">save</mat-icon>
             Guardar
           </button>
-                </div>
-            </form>
-        </mat-card-content>
-    </mat-card>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
