@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import Swal from 'sweetalert2';
 import { buttons } from '../../../../../assets/table-buttons/table-buttons';
 import { FormReportesComponent } from '../../components/form-reportes/form-reportes.component';
 
@@ -68,7 +69,19 @@ export class ReportesPageComponent implements OnInit {
     }
   }
   eliminarReporte(fila: any) {
-    console.log(fila, 'eliminado');
+    Swal.fire({
+      title: 'Advertencia',
+      text: `Desea eliminar el reporte "${fila.nombre}"?`,
+      showCancelButton: true,
+      confirmButtonText: `Confirmar`,
+      cancelButtonText: 'Cancelar',
+      icon: 'warning',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('', 'El reporte se ha eliminado con éxito', 'success');
+      }
+    });
   }
   actualizarReporte(fila: any) {
     console.log(fila, 'actualizado');

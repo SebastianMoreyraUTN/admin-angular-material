@@ -79,7 +79,7 @@ export class FormUsuariosComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'No has asignado ningún grupo al usuario!+',
+        text: 'No has asignado ningún grupo al usuario!',
       });
       return false;
     }

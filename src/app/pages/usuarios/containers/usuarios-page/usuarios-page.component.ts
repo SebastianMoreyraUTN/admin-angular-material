@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { buttons } from 'src/assets/table-buttons/table-buttons';
+import Swal from 'sweetalert2';
 import { FormUsuariosComponent } from '../../components/form-usuarios/form-usuarios.component';
 const DATA = [
   {
@@ -66,7 +67,20 @@ export class UsuariosPageComponent implements OnInit {
     console.log(evento.fila);
   }
   eliminarUsuario(fila: any): void {
-    console.log('eliminado');
+    Swal.fire({
+      title: 'Advertencia',
+      text: `Desea eliminar a ${fila.nombre} ${fila.apellido} ?`,
+      showCancelButton: true,
+      confirmButtonText: `Confirmar`,
+      cancelButtonText: 'Cancelar',
+      icon: 'warning',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('', 'El usuario se ha eliminado con éxito', 'success');
+        console.log('eliminado');
+      }
+    });
   }
   editarUsuario(fila: any): void {
     this.form.mapearValores(fila);
