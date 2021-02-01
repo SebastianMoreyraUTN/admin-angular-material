@@ -1,5 +1,15 @@
 <app-layout>
-    <mat-toolbar class="page-header" role="heading">
-        <h1>Grupos - Permisos</h1>
-    </mat-toolbar>
+  <mat-toolbar class="page-header" role="heading">
+    <h1>Grupos - Permisos</h1>
+  </mat-toolbar>
+  <div class="col-12 col-md-8">
+    <app-table
+      (clickBoton)="clickEnBotonFila($event)"
+      [data]="data"
+      [displayedColumns]="displayedColumns"
+      [columnas]="columnas"
+      [buttons]="botonesTabla"
+    >
+    </app-table>
+  </div>
 </app-layout>
