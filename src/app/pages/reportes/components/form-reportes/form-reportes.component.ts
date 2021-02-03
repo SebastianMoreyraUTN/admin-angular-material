@@ -1,5 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  FormGroupDirective,
+  Validators,
+} from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -25,7 +30,7 @@ export class FormReportesComponent implements OnInit {
   });
   titulo: string = 'Nuevo Reporte';
   modo: string = 'crear';
-
+  @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
   constructor() {}
 
   ngOnInit(): void {}
@@ -42,7 +47,7 @@ export class FormReportesComponent implements OnInit {
   }
 
   limpiarForm() {
-    this.reporteForm.reset('');
+    this.formGroupDirective.resetForm('');
     this.titulo = 'Crear Reporte';
     this.modo = 'crear';
   }

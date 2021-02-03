@@ -1,5 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormGroupDirective,
+} from '@angular/forms';
 import Swal from 'sweetalert2';
 import { DualMultiselectComponent } from '../../../../shared/dual-multiselect/dual-multiselect.component';
 
@@ -23,10 +28,13 @@ export class FormUsuariosComponent implements OnInit {
     nombre: new FormControl('', [Validators.required]),
     apellido: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+    confirmarPassword: new FormControl('', [Validators.required]),
   });
   titulo: string = 'Crear Usuario';
   modo: string = 'crear';
   @ViewChild('multiselect') multiselect: DualMultiselectComponent;
+  @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
   constructor() {}
 
   ngOnInit(): void {}
@@ -52,15 +60,28 @@ export class FormUsuariosComponent implements OnInit {
   }
 
   limpiarValores() {
-    this.usuarioForm.reset('');
+    this.formGroupDirective.resetForm('');
     this.titulo = 'Crear Usuario';
     this.modo = 'crear';
-    console.log(this.usuarioForm.value);
+    this.multiselect.limpiar();
   }
 
   guardarUsuario() {
-    console.log(this.usuarioForm.value);
-    console.log(this.multiselect.seleccionados);
+    this.usuarioForm.clearValidators();
+    if (
+      this.usuarioForm.get('password').value !=
+      this.usuarioForm.get('confirmarPassword').value
+    ) {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Oops',
+        text: 'Las contraseñas deben coincidir',
+        showConfirmButton: true,
+        showCloseButton: true,
+      });
+      return;
+    }
     if (this.validarGruposSeleccionados()) {
       Swal.fire({
         position: 'center',

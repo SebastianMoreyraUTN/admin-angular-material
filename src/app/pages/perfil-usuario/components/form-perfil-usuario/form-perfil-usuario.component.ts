@@ -49,7 +49,6 @@ export class FormPerfilUsuarioComponent implements OnInit {
   }
 
   guardarUsuario() {
-    console.log(this.usuarioForm.value);
     if (
       this.usuarioForm.get('password').value !=
       this.usuarioForm.get('confirmarPassword').value

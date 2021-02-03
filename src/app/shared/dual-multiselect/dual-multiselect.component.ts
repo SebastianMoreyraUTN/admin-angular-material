@@ -114,7 +114,16 @@ export class DualMultiselectComponent implements OnInit {
     formControl.setValue('');
   }
 
+  limpiar() {
+    this.items.push(...this.seleccionados);
+    this.seleccionados = [];
+    console.log(this.seleccionados);
+    this.filtroIzquierda.updateValueAndValidity();
+    this.filtroDerecha.updateValueAndValidity();
+  }
+
   mapearValores(items) {
+    this.items.push(...items);
     this.seleccionados = items;
     this.items = this.items.filter((i) => {
       for (let index = 0; index < items.length; index++) {
