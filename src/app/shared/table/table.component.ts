@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
   @Input() buttons: any[];
   @Input() columnas: string[];
 
-  @Output() clickBoton = new EventEmitter()
+  @Output() clickBoton = new EventEmitter();
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<any>(this.data);
@@ -39,8 +39,8 @@ export class TableComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  emitirEvento(fila:any, button:any) {
-    let evento = {fila,button};
+  emitirEvento(fila: any, button: any) {
+    const evento = {fila, button};
     this.clickBoton.emit(evento);
   }
 
@@ -50,20 +50,20 @@ export class TableComponent implements OnInit {
     this.dataSource.paginator._intl.nextPageLabel = 'Página siguiente';
     this.dataSource.paginator._intl.firstPageLabel = 'Primer página';
     this.dataSource.paginator._intl.previousPageLabel = 'Página previa';
- 
+
     this.dataSource.paginator._intl.getRangeLabel =  (page: number, pageSize: number, length: number) => {
       if (length == 0 || pageSize == 0) { return `Mostrando 0 de ${length} elementos`; }
-      
+
       length = Math.max(length, 0);
-    
+
       const startIndex = page * pageSize;
-    
+
       // If the start index exceeds the list length, do not try and fix the end index to the end.
       const endIndex = startIndex < length ?
           Math.min(startIndex + pageSize, length) :
           startIndex + pageSize;
-    
+
       return `Mostrando ${startIndex + 1} al ${endIndex} elementos de ${length}`;
-    }
+    };
   }
 }

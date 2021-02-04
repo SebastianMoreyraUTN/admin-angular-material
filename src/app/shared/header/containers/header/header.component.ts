@@ -18,8 +18,8 @@ export class HeaderComponent {
   public user$: Observable<User>;
   public emails$: Observable<Email[]>;
   public routers: typeof routes = routes;
-  public isChecked: boolean = false;
-  public tema: string = 'Light';
+  public isChecked = false;
+  public tema = 'Light';
 
   constructor(
     private userService: AuthService,

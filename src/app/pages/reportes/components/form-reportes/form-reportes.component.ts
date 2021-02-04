@@ -28,8 +28,8 @@ export class FormReportesComponent implements OnInit {
     parametros: new FormControl(''),
     actualizacion: new FormControl('', [Validators.required]),
   });
-  titulo: string = 'Nuevo Reporte';
-  modo: string = 'crear';
+  titulo = 'Nuevo Reporte';
+  modo = 'crear';
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
   constructor() {}
 

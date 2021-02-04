@@ -15,7 +15,7 @@ export class DialogComponent implements OnInit {
     category: string;
     value: string;
     title: string;
-    drillDowns:any[];
+    drillDowns: any[];
   }) { }
 
   ngOnInit(): void {

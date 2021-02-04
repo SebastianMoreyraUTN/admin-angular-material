@@ -13,7 +13,7 @@ export class UserComponent {
   @Input() user: User;
   @Output() signOut: EventEmitter<void> = new EventEmitter<void>();
   public routes: typeof routes = routes;
-  public flatlogicEmail: string = 'https://flatlogic.com';
+  public flatlogicEmail = 'https://flatlogic.com';
 
   constructor(private router: Router) {}
 

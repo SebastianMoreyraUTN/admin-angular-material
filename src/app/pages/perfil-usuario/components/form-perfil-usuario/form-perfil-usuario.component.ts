@@ -16,7 +16,7 @@ export class FormPerfilUsuarioComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
     confirmarPassword: new FormControl('', [Validators.required]),
   });
-  isChecked: boolean = false;
+  isChecked = false;
   tema: string;
   constructor(private temaService: TemaService) {}
 

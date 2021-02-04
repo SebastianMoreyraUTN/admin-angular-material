@@ -6,8 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./card-badge.component.scss']
 })
 export class CardBadgeComponent implements OnInit {
-  @Input() icon:string = '';
-  @Input() title:string = '';
+  @Input() icon = '';
+  @Input() title = '';
 
   constructor() { }
 

@@ -6,7 +6,7 @@ import { ReportesPageComponent } from './containers/reportes-page/reportes-page.
 const routes: Routes = [
   {
     path: '',
-    component:ReportesPageComponent
+    component: ReportesPageComponent
   }
 ];
 

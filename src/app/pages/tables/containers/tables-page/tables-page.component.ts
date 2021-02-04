@@ -10,8 +10,8 @@ import { Customer, Employee } from '../../models';
   styleUrls: ['./tables-page.component.scss']
 })
 export class TablesPageComponent {
-  public employeeTableData$: Observable<Employee[]>
-  public materialTableData$: Observable<Customer[]>
+  public employeeTableData$: Observable<Employee[]>;
+  public materialTableData$: Observable<Customer[]>;
 
   constructor(private service: TablesService) {
     this.employeeTableData$ = service.loadEmployeeTableData();

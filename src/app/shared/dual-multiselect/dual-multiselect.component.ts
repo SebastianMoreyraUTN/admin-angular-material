@@ -10,13 +10,13 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class DualMultiselectComponent implements OnInit {
   /*
-    La propiedad items define las opciones sobre las que 
+    La propiedad items define las opciones sobre las que
     va a trabajar este componente. El componente padre que
     utilice multiselect deberá pasarle el conjunto de opciones
-    que desee. 
+    que desee.
   */
   @Input() items: string[] = [];
-  @Input() titulo: string = '';
+  @Input() titulo = '';
   seleccionados: string[] = [];
   filtroIzquierda = new FormControl('');
   filtroDerecha = new FormControl('');
@@ -43,7 +43,7 @@ export class DualMultiselectComponent implements OnInit {
     return listaItems.filter((i) => i.toLowerCase().includes(valorFiltrado));
   }
   /*
-    Elimina el item seleccionado de la lista de la izquierda y lo agrega a 
+    Elimina el item seleccionado de la lista de la izquierda y lo agrega a
     la lista de la derecha. En caso de que el item seleccionado fue visualizado
     mediante un filtro, también lo elimina de la lista de items filtrados.
     */
@@ -65,10 +65,10 @@ export class DualMultiselectComponent implements OnInit {
     this.filtradosIzquierda
       .subscribe((res: string[]) => {
         /*
-          Cuando me suscribo la respuesta es la lista de items entera, 
+          Cuando me suscribo la respuesta es la lista de items entera,
           esto se debe a que al hacer click en "Seleccionar Todos" el evento
           valueChanges no se dispara, por lo tanto no se aplica ningún filtro
-          por más que se haya aplicado anteriormente. Por lo tanto debemos 
+          por más que se haya aplicado anteriormente. Por lo tanto debemos
           forzar la aplicación del filtro. Esa es la razón por la cual a "res"
           le asignamos el retorno de "this.filtrar".
           */

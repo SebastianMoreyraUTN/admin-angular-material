@@ -31,8 +31,8 @@ export class FormUsuariosComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
     confirmarPassword: new FormControl('', [Validators.required]),
   });
-  titulo: string = 'Crear Usuario';
-  modo: string = 'crear';
+  titulo = 'Crear Usuario';
+  modo = 'crear';
   @ViewChild('multiselect') multiselect: DualMultiselectComponent;
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
   constructor() {}

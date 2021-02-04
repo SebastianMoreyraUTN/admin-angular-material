@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
 })
 export class InicioPageComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  navigate(route:string) {
-    this.router.navigate(['../'+route]);
+  navigate(route: string) {
+    this.router.navigate(['../' + route]);
   }
 
 }

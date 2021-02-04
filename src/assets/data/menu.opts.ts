@@ -1,35 +1,35 @@
 export const options = [{
-    "name": "Inicio",
-    "icon": "home",
-    "redirectTo": "/inicio"
+    name: 'Inicio',
+    icon: 'home',
+    redirectTo: '/inicio'
 },
 {
-    "name": "Usuarios",
-    "icon": "people",
-    "redirectTo": "/usuarios"
+    name: 'Usuarios',
+    icon: 'people',
+    redirectTo: '/usuarios'
 },
 {
-    "name": "Grupos - Permisos",
-    "icon": "security",
-    "redirectTo": "/grupos-permisos"
+    name: 'Grupos - Permisos',
+    icon: 'security',
+    redirectTo: '/grupos-permisos'
 },
 {
-    "name": "Reportes",
-    "icon": "assignment",
-    "redirectTo": "/reportes"
+    name: 'Reportes',
+    icon: 'assignment',
+    redirectTo: '/reportes'
 },
 {
-    "name": "Vistas",
-    "icon": "insert_chart",
-    "redirectTo": "/vistas"
+    name: 'Vistas',
+    icon: 'insert_chart',
+    redirectTo: '/vistas'
 },
 {
-    "name": "Tableros",
-    "icon": "dashboard",
-    "redirectTo": "/tableros"
+    name: 'Tableros',
+    icon: 'dashboard',
+    redirectTo: '/tableros'
 },
 {
-    "name": "Presentaciones",
-    "icon": "movie_creation",
-    "redirectTo": "/presentaciones"
-}]
+    name: 'Presentaciones',
+    icon: 'movie_creation',
+    redirectTo: '/presentaciones'
+}];

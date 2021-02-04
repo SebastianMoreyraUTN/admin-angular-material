@@ -7,9 +7,9 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getMenuOpts() {
-    return this.http.get('../../assets/data/menu.opts.json')
+    return this.http.get('../../assets/data/menu.opts.json');
   }
 }

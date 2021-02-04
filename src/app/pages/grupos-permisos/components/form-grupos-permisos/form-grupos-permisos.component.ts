@@ -23,7 +23,7 @@ const REPORTES = [
   styleUrls: ['./form-grupos-permisos.component.scss'],
 })
 export class FormGruposPermisosComponent implements OnInit {
-  titulo: string = 'Crear Grupo';
+  titulo = 'Crear Grupo';
   permisos: string[] = [
     'Reportes',
     'Usuarios',
@@ -35,7 +35,7 @@ export class FormGruposPermisosComponent implements OnInit {
     'Presentaciones/Editar',
   ];
   reportes: any[] = REPORTES;
-  modo: string = 'crear';
+  modo = 'crear';
   grupoForm: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
   });
@@ -69,7 +69,7 @@ export class FormGruposPermisosComponent implements OnInit {
 
   guardarGrupo(): void {
     if (this.validarPermisosSeleccionados()) {
-      if (this.validarReportesSeleccionados())
+      if (this.validarReportesSeleccionados()) {
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -77,6 +77,7 @@ export class FormGruposPermisosComponent implements OnInit {
           showConfirmButton: true,
           showCloseButton: true,
         });
+      }
     }
   }
 
@@ -103,7 +104,7 @@ export class FormGruposPermisosComponent implements OnInit {
   validarReportesSeleccionados() {
     if (!this.reportesMultiselect) {
       return true;
-    } else if (this.reportesMultiselect.seleccionados.length > 0) return true;
+    } else if (this.reportesMultiselect.seleccionados.length > 0) { return true; }
     Swal.fire({
       icon: 'error',
       title: 'Oops...',

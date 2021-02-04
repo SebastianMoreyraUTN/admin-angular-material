@@ -9,10 +9,10 @@ import { Component } from '@angular/core';
 export class DashboardPageComponent {
 
   constructor() {
-  
+
   }
 
   ngOnInit() {
-    console.log("prueba");
+    console.log('prueba');
   }
 }

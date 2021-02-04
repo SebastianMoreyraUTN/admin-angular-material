@@ -13,7 +13,7 @@ export class XyDialogComponent implements OnInit {
     category: string;
     values: any[];
     title: string;
-    drillDowns:any[];
+    drillDowns: any[];
   }) { }
 
   ngOnInit(): void {

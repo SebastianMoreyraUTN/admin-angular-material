@@ -23,20 +23,20 @@ export class DrillDownExampleComponent {
 
   constructor(private zone: NgZone) {}
 
-  //Esto se debe a que estoy creando una vista externa al view del component.
-  //Se ejecuta una vez que se cargan todas las vistas del componente y sus hijos.
+  // Esto se debe a que estoy creando una vista externa al view del component.
+  // Se ejecuta una vez que se cargan todas las vistas del componente y sus hijos.
   ngAfterViewInit() {
     console.log(this.data);
     // Chart code goes in here
     am4core.useTheme(am4themes_animated);
-    //To stop change detection
+    // To stop change detection
     /* Según lo que entendí, utiliza esto porque los eventos que se ejecutan para
        detectar cambios son muy costos en cuestiones de performance*/
-    //It is recommended that all amCharts operations be run outside of Angular.
+    // It is recommended that all amCharts operations be run outside of Angular.
     this.zone.runOutsideAngular(() => {
-      let chart = am4core.create('chartdiv', am4charts.XYChart);
+      const chart = am4core.create('chartdiv', am4charts.XYChart);
       chart.data = this.data;
-      let title = chart.titles.create();
+      const title = chart.titles.create();
       title.text = this.title;
       this.chart = chart;
       chart.legend = new am4charts.Legend();
@@ -44,19 +44,19 @@ export class DrillDownExampleComponent {
       chart.scrollbarX = new am4core.Scrollbar();
       chart.responsive.enabled = true;
 
-      //Creating nav
+      // Creating nav
       this.nav = chart.createChild(am4charts.NavigationBar);
       this.nav.data = [{ name: this.title }];
       this.nav.toBack();
 
-      //Setting Axis and Series
+      // Setting Axis and Series
       this.setAxis();
       this.setSeries();
 
-      //Handling nav functionality
+      // Handling nav functionality
       this.setNavClickEvent();
 
-      //Setting Responsiveness
+      // Setting Responsiveness
       this.setResponsiveness();
     });
   }
@@ -72,7 +72,7 @@ export class DrillDownExampleComponent {
       'Area: {categoryX} \n Sales {valueY} {name}';
     this.series.columns.template.events.on('hit', (ev: any) => {
       this.chart.colors.reset();
-      let linkData = ev.target.dataItem.dataContext;
+      const linkData = ev.target.dataItem.dataContext;
       this.actualNavName = linkData[this.series.dataFields.categoryX];
       if (linkData.sub) {
         this.chart.data = linkData.sub;
@@ -97,15 +97,15 @@ export class DrillDownExampleComponent {
     this.categoryAxis.title.text = this.category;
     this.categoryAxis.dataFields.category = this.category;
 
-    let valueAxisY = this.chart.yAxes.push(new am4charts.ValueAxis());
+    const valueAxisY = this.chart.yAxes.push(new am4charts.ValueAxis());
     valueAxisY.title.text = this.value;
     valueAxisY.renderer.minWidth = 20;
   }
 
   setNavClickEvent() {
     this.nav.links.template.events.on('hit', (ev: any) => {
-      let target = ev.target.dataItem.dataContext;
-      let nav = ev.target.parent;
+      const target = ev.target.dataItem.dataContext;
+      const nav = ev.target.parent;
       this.chart.colors.reset();
       if (target.step) {
         this.series.dataFields.categoryX = target.category;
@@ -131,20 +131,20 @@ export class DrillDownExampleComponent {
  * ========================================================
  */
 
-this.chart.responsive.useDefault = false
+this.chart.responsive.useDefault = false;
 this.chart.responsive.enabled = true;
 
 this.chart.responsive.rules.push({
-  relevant: function(target) {
+  relevant(target) {
     if (target.pixelWidth <= 400) {
       return true;
     }
-    
+
     return false;
   },
-  state: function(target, stateId) {
+  state(target, stateId) {
     if (target instanceof am4charts.Chart) {
-      var state = target.states.create(stateId);
+      const state = target.states.create(stateId);
       state.properties.paddingTop = 5;
       state.properties.paddingRight = 15;
       state.properties.paddingBottom = 5;
@@ -155,7 +155,7 @@ this.chart.responsive.rules.push({
   }
 });
   }
-  //Para borrar el chart una vez que la instancia es destruida.
+  // Para borrar el chart una vez que la instancia es destruida.
   ngOnDestroy() {
     this.zone.runOutsideAngular(() => {
       if (this.chart) {
