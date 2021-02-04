@@ -16,6 +16,7 @@ export class DualMultiselectComponent implements OnInit {
     que desee. 
   */
   @Input() items: string[] = [];
+  @Input() titulo: string = '';
   seleccionados: string[] = [];
   filtroIzquierda = new FormControl('');
   filtroDerecha = new FormControl('');
@@ -123,6 +124,7 @@ export class DualMultiselectComponent implements OnInit {
   }
 
   mapearValores(items) {
+    console.log(items);
     this.items.push(...items);
     this.seleccionados = items;
     this.items = this.items.filter((i) => {

@@ -1,12 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { buttons } from 'src/assets/table-buttons/table-buttons';
 import Swal from 'sweetalert2';
+import { FormGruposPermisosComponent } from '../../components/form-grupos-permisos/form-grupos-permisos.component';
 
 const DATA = [
-  { nombre: 'Grupo1' },
-  { nombre: 'Grupo2' },
-  { nombre: 'Grupo3' },
-  { nombre: 'Grupo4' },
+  {
+    nombre: 'Grupo1',
+    permisos: ['Tableros/Ver', 'Reportes'],
+    reportes: ['Reporte1'],
+  },
+  { nombre: 'Grupo2', permisos: ['Tableros/Ver'], reportes: [] },
+  {
+    nombre: 'Grupo3',
+    permisos: ['Tableros/Ver', 'Reportes'],
+    reportes: ['Reporte2', 'Reporte3'],
+  },
+  {
+    nombre: 'Grupo4',
+    permisos: ['Tableros/Ver', 'Reportes'],
+    reportes: ['Reporte2', 'Reporte3'],
+  },
 ];
 
 @Component({
@@ -19,7 +32,8 @@ export class GruposPermisosPageComponent implements OnInit {
   data: any[] = DATA;
   columnas = ['nombre'];
   botonesTabla = [buttons.editar, buttons.eliminar];
-
+  @ViewChild('form') form: FormGruposPermisosComponent;
+  @ViewChild('scroll') formDiv: ElementRef;
   constructor() {}
 
   ngOnInit(): void {}
@@ -40,6 +54,8 @@ export class GruposPermisosPageComponent implements OnInit {
 
   editarGrupo(fila): void {
     console.log(fila);
+    this.form.mapearValores(fila);
+    this.scroll();
   }
 
   eliminarGrupo(fila): void {
@@ -56,5 +72,14 @@ export class GruposPermisosPageComponent implements OnInit {
         Swal.fire('', 'El grupo se ha eliminado con éxito', 'success');
       }
     });
+  }
+
+  nuevoGrupo() {
+    this.form.limpiarValores();
+    this.scroll();
+  }
+
+  scroll() {
+    this.formDiv.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
 }

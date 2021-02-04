@@ -1,15 +1,18 @@
 <app-layout>
-  <mat-toolbar class="page-header" role="heading">
-    <h1>Grupos - Permisos</h1>
-  </mat-toolbar>
-  <div class="col-12 col-md-8">
-    <app-table
-      (clickBoton)="clickEnBotonFila($event)"
-      [data]="data"
-      [displayedColumns]="displayedColumns"
-      [columnas]="columnas"
-      [buttons]="botonesTabla"
-    >
-    </app-table>
-  </div>
+    <mat-toolbar class="page-header" role="heading">
+        <h1>Grupos - Permisos</h1>
+    </mat-toolbar>
+    <div class="col-12 col-md-12">
+        <app-table (clickBoton)="clickEnBotonFila($event)" [data]="data" [displayedColumns]="displayedColumns" [columnas]="columnas" [buttons]="botonesTabla">
+            <div>
+                <button (click)="nuevoGrupo()" class="nuevo-button" mat-raised-button color="primary">
+          <span class="esconder">Nuevo Grupo</span>
+          <mat-icon class="nuevo-icon">add_moderator</mat-icon>
+        </button>
+            </div>
+        </app-table>
+        <div class="row" #scroll>
+            <app-form-grupos-permisos #form></app-form-grupos-permisos>
+        </div>
+    </div>
 </app-layout>
