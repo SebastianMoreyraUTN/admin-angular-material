@@ -37,6 +37,7 @@ import { MaterialModule } from '../angular-material/material.module';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    RouterModule,
   ],
 })
 export class SharedModule {}
