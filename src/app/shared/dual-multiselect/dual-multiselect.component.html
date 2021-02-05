@@ -1,4 +1,4 @@
-<div class="multiselect">
+<div class="multiselect" [ngClass]="this.temaService.colorScheme === 'dark-theme' ? 'dark-color' : ''">
     <mat-toolbar class="multiselect-header">
         <span class="titulo">{{ this.titulo }}</span>
     </mat-toolbar>
@@ -20,7 +20,9 @@
                 </mat-form-field>
 
                 <!-- Lista de items para seleccionar a la izquierda -->
-                <div class="contenedor-items">
+                <div class="contenedor-items" [ngClass]="
+            this.temaService.colorScheme === 'dark-theme' ? 'dark-color' : ''
+          ">
                     <mat-selection-list [multiple]="false">
                         <mat-list-option class="animate__animated animate__fadeIn" (click)="seleccionarItem(item)" *ngFor="let item of filtradosIzquierda | async" [value]="item">
                             <mat-icon matListIcon>east</mat-icon>
@@ -48,7 +50,9 @@
           </button>
                 </mat-form-field>
                 <!-- Lista de items seleccionados -->
-                <div class="contenedor-items">
+                <div class="contenedor-items" [ngClass]="
+            this.temaService.colorScheme === 'dark-theme' ? 'dark-color' : ''
+          ">
                     <mat-selection-list [multiple]="false">
                         <mat-list-option class="animate__animated animate__fadeIn" (click)="quitarItem(seleccionado)" *ngFor="let seleccionado of filtradosDerecha | async" [value]="seleccionado">
                             <mat-icon matListIcon>west</mat-icon>

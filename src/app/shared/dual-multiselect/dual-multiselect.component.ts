@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { TemaService } from '../../services/tema.service';
 
 @Component({
   selector: 'app-dual-multiselect',
@@ -22,7 +23,7 @@ export class DualMultiselectComponent implements OnInit {
   filtroDerecha = new FormControl('');
   filtradosIzquierda: Observable<string[]>;
   filtradosDerecha: Observable<string[]>;
-  constructor() {}
+  constructor(public temaService: TemaService) {}
 
   ngOnInit(): void {
     this.filtradosIzquierda = this.filtroIzquierda.valueChanges.pipe(
