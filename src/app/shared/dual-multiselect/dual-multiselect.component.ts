@@ -40,6 +40,7 @@ export class DualMultiselectComponent implements OnInit {
 
   filtrar(valor: string, listaItems: string[]): string[] {
     const valorFiltrado = valor.toLowerCase();
+    listaItems.sort();
     return listaItems.filter((i) => i.toLowerCase().includes(valorFiltrado));
   }
   /*
@@ -124,8 +125,12 @@ export class DualMultiselectComponent implements OnInit {
   }
 
   mapearValores(items) {
-    console.log(items);
-    this.items.push(...items);
+    /* 
+      Coloco todos los valores en this.items, luego le asigno a
+      seleccionados los valores que se deben mapear . Por último,
+      a this.items debemos removerle todos aquellos que estén en this.seleccionados
+    */
+    this.items.push(...this.seleccionados);
     this.seleccionados = items;
     this.items = this.items.filter((i) => {
       for (let index = 0; index < items.length; index++) {

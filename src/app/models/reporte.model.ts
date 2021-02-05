@@ -1,4 +1,4 @@
-export class Reportes {
+export class Reporte {
   nombre: string;
   url: string;
   consulta: string;
