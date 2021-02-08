@@ -2,7 +2,7 @@
     <mat-toolbar class="page-header" role="heading">
         <h1>Usuarios</h1>
     </mat-toolbar>
-    <app-table (clickBoton)="clickEnBotonFila($event)" [data]="data" [displayedColumns]="displayedColumns" [columnas]="columnas" [buttons]="botonesTabla">
+    <app-table (clickBoton)="clickEnBotonFila($event)" [data]="usuarios" [displayedColumns]="displayedColumns" [columnas]="columnas" [buttons]="botonesTabla">
         <div>
             <button (click)="nuevoUsuario()" class="nuevo-button" mat-raised-button color="primary">
         <span class="esconder">Nuevo Usuario</span>

@@ -4,6 +4,7 @@ import { buttons } from '../../../../../assets/table-buttons/table-buttons';
 import { FormReportesComponent } from '../../components/form-reportes/form-reportes.component';
 import { ReportesService } from '../../services/reportes.service';
 import { Observable } from 'rxjs';
+import { Reporte } from 'src/app/models/reporte.model';
 
 @Component({
   selector: 'app-reportes-page',
@@ -20,7 +21,7 @@ export class ReportesPageComponent implements OnInit {
     'eliminar',
     'actualizar',
   ];
-  reportes: Observable<any> = this.reportesService.getReportes();
+  reportes: Observable<Reporte[]> = this.reportesService.getReportes();
   columnas = ['nombre', 'url', 'consulta', 'actualizado'];
   botonesTabla = [buttons.editar, buttons.actualizar, buttons.eliminar];
   @ViewChild('scroll') formDiv: ElementRef;

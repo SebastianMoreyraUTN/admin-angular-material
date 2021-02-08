@@ -2,35 +2,10 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { buttons } from 'src/assets/table-buttons/table-buttons';
 import Swal from 'sweetalert2';
 import { FormUsuariosComponent } from '../../components/form-usuarios/form-usuarios.component';
-const DATA = [
-  {
-    nombre: 'Sebastian',
-    apellido: 'Moreyra',
-    email: 'sm@gmail.com',
-    grupos: ['desarrollo', 'soporte'],
-  },
-  {
-    nombre: 'Alan',
-    apellido: 'Pieckenstainer',
-    email: 'a@gmail.com',
-    grupos: ['rrhh', 'comercial'],
-  },
-  {
-    nombre: 'Franco',
-    apellido: 'Morini',
-    email: 'fm@gmail.com',
-  },
-  {
-    nombre: 'Hugo',
-    apellido: 'Bustos',
-    email: 'hb@gmail.com',
-  },
-  {
-    nombre: 'Elias',
-    apellido: 'Cuevas',
-    email: 'ec@gmail.com',
-  },
-];
+import { UsuariosService } from '../../services/usuarios.service';
+import { Observable } from 'rxjs';
+import { Usuario } from '../../../../models/usuario.model';
+
 @Component({
   selector: 'app-usuarios-page',
   templateUrl: './usuarios-page.component.html',
@@ -44,14 +19,16 @@ export class UsuariosPageComponent implements OnInit {
     'editar',
     'eliminar',
   ];
-  data: any[] = DATA;
+  usuarios: Observable<Usuario[]>;
   columnas = ['nombre', 'apellido', 'email', 'actualizado'];
   botonesTabla = [buttons.editar, buttons.eliminar];
   @ViewChild('scroll') formDiv: ElementRef;
   @ViewChild('form') form: FormUsuariosComponent;
-  constructor() {}
+  constructor(private usuarioService: UsuariosService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.usuarios = this.usuarioService.getUsuarios();
+  }
 
   clickEnBotonFila(evento: any): void {
     switch (evento.button.name) {

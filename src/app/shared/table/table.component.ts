@@ -83,4 +83,17 @@ export class TableComponent implements OnInit {
       } al ${endIndex} elementos de ${length}`;
     };
   }
+
+  getPageSize(): any[] {
+    if (this.actualData.length <= 5) {
+      return [5];
+    }
+    if (this.actualData.length <= 10) {
+      return [5, this.actualData.length];
+    }
+    if (this.actualData.length <= 20) {
+      return [5, 10, this.actualData.length];
+    }
+    return [5, 10, 20, this.actualData.length];
+  }
 }

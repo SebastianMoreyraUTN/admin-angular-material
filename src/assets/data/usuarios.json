@@ -1,0 +1,28 @@
+[{
+        "nombre": "Sebastian",
+        "apellido": "Moreyra",
+        "email": "sm@gmail.com",
+        "grupos": ["desarrollo", "soporte"]
+    },
+    {
+        "nombre": "Alan",
+        "apellido": "Pieckenstainer",
+        "email": "a@gmail.com",
+        "grupos": ["rrhh", "comercial"]
+    },
+    {
+        "nombre": "Franco",
+        "apellido": "Morini",
+        "email": "fm@gmail.com"
+    },
+    {
+        "nombre": "Hugo",
+        "apellido": "Bustos",
+        "email": "hb@gmail.com"
+    },
+    {
+        "nombre": "Elias",
+        "apellido": "Cuevas",
+        "email": "ec@gmail.com"
+    }
+]
