@@ -1,26 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Grupo } from 'src/app/models/grupo.model';
 import { buttons } from 'src/assets/table-buttons/table-buttons';
 import Swal from 'sweetalert2';
 import { FormGruposPermisosComponent } from '../../components/form-grupos-permisos/form-grupos-permisos.component';
-
-const DATA = [
-  {
-    nombre: 'Grupo1',
-    permisos: ['Tableros/Ver', 'Reportes'],
-    reportes: ['Reporte1'],
-  },
-  { nombre: 'Grupo2', permisos: ['Tableros/Ver'], reportes: [] },
-  {
-    nombre: 'Grupo3',
-    permisos: ['Tableros/Ver', 'Reportes'],
-    reportes: ['Reporte2', 'Reporte3'],
-  },
-  {
-    nombre: 'Grupo4',
-    permisos: ['Tableros/Ver', 'Reportes'],
-    reportes: ['Reporte2', 'Reporte3'],
-  },
-];
+import { GruposPermisosService } from '../../services/grupos-permisos.service';
 
 @Component({
   selector: 'app-grupos-permisos-page',
@@ -29,14 +13,16 @@ const DATA = [
 })
 export class GruposPermisosPageComponent implements OnInit {
   displayedColumns: string[] = ['nombre', 'editar', 'eliminar'];
-  data: any[] = DATA;
+  grupos: Observable<Grupo[]>;
   columnas = ['nombre'];
   botonesTabla = [buttons.editar, buttons.eliminar];
   @ViewChild('form') form: FormGruposPermisosComponent;
   @ViewChild('scroll') formDiv: ElementRef;
-  constructor() {}
+  constructor(private gruposPermisosService: GruposPermisosService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.grupos = this.gruposPermisosService.getGrupos();
+  }
 
   clickEnBotonFila(evento) {
     switch (evento.button.name) {

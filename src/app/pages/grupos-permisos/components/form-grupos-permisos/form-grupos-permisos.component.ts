@@ -7,16 +7,8 @@ import {
 } from '@angular/forms';
 import { DualMultiselectComponent } from 'src/app/shared/dual-multiselect/dual-multiselect.component';
 import Swal from 'sweetalert2';
+import { ReportesService } from '../../../reportes/services/reportes.service';
 
-const REPORTES = [
-  'Reporte1',
-  'Reporte2',
-  'Reporte3',
-  'Reporte4',
-  'Reporte5',
-  'Reporte6',
-  'Reporte7',
-];
 @Component({
   selector: 'app-form-grupos-permisos',
   templateUrl: './form-grupos-permisos.component.html',
@@ -34,7 +26,7 @@ export class FormGruposPermisosComponent implements OnInit {
     'Presentaciones/Ver',
     'Presentaciones/Editar',
   ];
-  reportes: any[] = REPORTES;
+  reportes: any[] = [];
   modo = 'crear';
   grupoForm: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
@@ -44,9 +36,18 @@ export class FormGruposPermisosComponent implements OnInit {
   @ViewChild('reportesMultiselect')
   reportesMultiselect: DualMultiselectComponent;
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
-  constructor(private changeDetector: ChangeDetectorRef) {}
+  constructor(
+    private changeDetector: ChangeDetectorRef,
+    private reportesService: ReportesService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.reportesService.getReportes().subscribe((res) => {
+      res.map((element) => {
+        this.reportes.push(element.nombre);
+      });
+    });
+  }
 
   mostrarError(formControl) {
     if (formControl.hasError('required')) {
@@ -104,7 +105,9 @@ export class FormGruposPermisosComponent implements OnInit {
   validarReportesSeleccionados() {
     if (!this.reportesMultiselect) {
       return true;
-    } else if (this.reportesMultiselect.seleccionados.length > 0) { return true; }
+    } else if (this.reportesMultiselect.seleccionados.length > 0) {
+      return true;
+    }
     Swal.fire({
       icon: 'error',
       title: 'Oops...',

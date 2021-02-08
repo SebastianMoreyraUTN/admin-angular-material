@@ -1,0 +1,17 @@
+[{
+        "nombre": "Grupo1",
+        "permisos": ["Tableros/Ver", "Reportes"],
+        "reportes": ["Reporte1"]
+    },
+    { "nombre": "Grupo2", "permisos": ["Tableros/Ver"], "reportes": [] },
+    {
+        "nombre": "Grupo3",
+        "permisos": ["Tableros/Ver", "Reportes"],
+        "reportes": ["Reporte2", "Reporte3"]
+    },
+    {
+        "nombre": "Grupo4",
+        "permisos": ["Tableros/Ver", "Reportes"],
+        "reportes": ["Reporte2", "Reporte3"]
+    }
+]

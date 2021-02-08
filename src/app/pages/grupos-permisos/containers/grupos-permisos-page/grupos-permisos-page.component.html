@@ -3,7 +3,7 @@
         <h1>Grupos - Permisos</h1>
     </mat-toolbar>
     <div class="col-12 col-md-12">
-        <app-table (clickBoton)="clickEnBotonFila($event)" [data]="data" [displayedColumns]="displayedColumns" [columnas]="columnas" [buttons]="botonesTabla">
+        <app-table (clickBoton)="clickEnBotonFila($event)" [data]="grupos" [displayedColumns]="displayedColumns" [columnas]="columnas" [buttons]="botonesTabla">
             <div>
                 <button (click)="nuevoGrupo()" class="nuevo-button" mat-raised-button color="primary">
           <span class="esconder">Nuevo Grupo</span>
