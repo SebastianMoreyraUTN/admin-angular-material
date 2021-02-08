@@ -10,6 +10,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { TableComponent } from './table/table.component';
 import { DualMultiselectComponent } from './dual-multiselect/dual-multiselect.component';
 import { MaterialModule } from '../angular-material/material.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MaterialModule } from '../angular-material/material.module';
     MaterialModule,
   ],
   exports: [
+    CommonModule,
     HeaderModule,
     SidebarComponent,
     FooterComponent,

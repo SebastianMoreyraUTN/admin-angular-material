@@ -19,12 +19,11 @@
                             <mat-hint align="end">Max. Caracteres {{ input.value?.length || 0 }}/16</mat-hint>
                         </mat-form-field>
                     </div>
-                    <app-dual-multiselect *ngIf="reporteSeleccionado()" #reportesMultiselect [titulo]="'Reportes a los que el usuario podrá acceder'" [items]="reportes"></app-dual-multiselect>
+                    <app-dual-multiselect *ngIf="this.reporteSeleccionado()" #reportesMultiselect [titulo]="'Reportes a los que el usuario podrá acceder'" [items]="reportes"></app-dual-multiselect>
                 </div>
                 <div class="d-flex justify-content-end">
                     <button (click)="guardarGrupo()" type="submit" [disabled]="grupoForm.invalid" mat-raised-button color="primary">
             <mat-icon class="save-icon">save</mat-icon>
-            Guardar
           </button>
                 </div>
             </form>

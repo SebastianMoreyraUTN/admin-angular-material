@@ -1,8 +1,15 @@
-import { Component, Input, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+  EventEmitter,
+} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { timingSafeEqual } from 'crypto';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-table',
@@ -17,7 +24,8 @@ export class TableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  @Input() data: any;
+  actualData: any[] = [];
+  @Input() data: Observable<any>;
   @Input() displayedColumns: string[];
   @Input() buttons: any[];
   @Input() columnas: string[];
@@ -25,13 +33,13 @@ export class TableComponent implements OnInit {
   @Output() clickBoton = new EventEmitter();
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<any>(this.data);
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.traducirPaginador();
-    this.dataSource.sort = this.sort;
+    this.data.subscribe((res) => {
+      this.actualData = res;
+      this.dataSource = new MatTableDataSource<any>(this.actualData);
+      this.dataSource.paginator = this.paginator;
+      this.traducirPaginador();
+      this.dataSource.sort = this.sort;
+    });
   }
 
   applyFilter(event: Event): void {
@@ -39,31 +47,40 @@ export class TableComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  emitirEvento(fila: any, button: any) {
-    const evento = {fila, button};
+  emitirEvento(fila: any, button: any): void {
+    const evento = { fila, button };
     this.clickBoton.emit(evento);
   }
 
-  traducirPaginador() {
+  traducirPaginador(): void {
     this.dataSource.paginator._intl.itemsPerPageLabel = 'Elementos por página';
     this.dataSource.paginator._intl.lastPageLabel = 'Última págna';
     this.dataSource.paginator._intl.nextPageLabel = 'Página siguiente';
     this.dataSource.paginator._intl.firstPageLabel = 'Primer página';
     this.dataSource.paginator._intl.previousPageLabel = 'Página previa';
 
-    this.dataSource.paginator._intl.getRangeLabel =  (page: number, pageSize: number, length: number) => {
-      if (length == 0 || pageSize == 0) { return `Mostrando 0 de ${length} elementos`; }
+    this.dataSource.paginator._intl.getRangeLabel = (
+      page: number,
+      pageSize: number,
+      length: number
+    ) => {
+      if (length == 0 || pageSize == 0) {
+        return `Mostrando 0 de ${length} elementos`;
+      }
 
       length = Math.max(length, 0);
 
       const startIndex = page * pageSize;
 
       // If the start index exceeds the list length, do not try and fix the end index to the end.
-      const endIndex = startIndex < length ?
-          Math.min(startIndex + pageSize, length) :
-          startIndex + pageSize;
+      const endIndex =
+        startIndex < length
+          ? Math.min(startIndex + pageSize, length)
+          : startIndex + pageSize;
 
-      return `Mostrando ${startIndex + 1} al ${endIndex} elementos de ${length}`;
+      return `Mostrando ${
+        startIndex + 1
+      } al ${endIndex} elementos de ${length}`;
     };
   }
 }
