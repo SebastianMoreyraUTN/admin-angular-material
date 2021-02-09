@@ -19,11 +19,51 @@
                             <mat-hint align="end">Max. Caracteres {{ input.value?.length || 0 }}/16</mat-hint>
                         </mat-form-field>
                     </div>
-                    <app-dual-multiselect *ngIf="this.reporteSeleccionado()" #reportesMultiselect [titulo]="'Reportes a los que el usuario podrá acceder'" [items]="reportes"></app-dual-multiselect>
+                    <mat-accordion>
+                        <mat-expansion-panel expanded="true" *ngIf="this.permisoSeleccionado('Reportes')">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title> Reportes </mat-panel-title>
+                                <mat-panel-description>
+                                    <span> Reportes a los que el usuario tendrá acceso</span>
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <app-dual-multiselect #reportesMultiselect [titulo]="'Reportes del Grupo'" [items]="reportes"></app-dual-multiselect>
+                        </mat-expansion-panel>
+
+                        <mat-expansion-panel expanded="true" *ngIf="this.permisoSeleccionado('Vistas')">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title> Vistas </mat-panel-title>
+                                <mat-panel-description>
+                                    <span> Vistas a las que el usuario tendrá acceso</span>
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                        </mat-expansion-panel>
+
+                        <mat-expansion-panel expanded="true" *ngIf="this.permisoSeleccionado('Tableros')">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title> Tableros </mat-panel-title>
+                                <mat-panel-description>
+                                    <span>Tableros a los que el usuario tendrá acceso</span>
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel expanded="true" *ngIf="this.permisoSeleccionado('Presentaciones')">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title> Presentaciones </mat-panel-title>
+                                <mat-panel-description>
+                                    <span>
+                    Presentaciones a las que el usuario tendrá acceso
+                  </span>
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                        </mat-expansion-panel>
+                    </mat-accordion>
                 </div>
                 <div class="d-flex justify-content-end">
                     <button (click)="guardarGrupo()" type="submit" [disabled]="grupoForm.invalid" mat-raised-button color="primary">
             <mat-icon class="save-icon">save</mat-icon>
+            Guardar
           </button>
                 </div>
             </form>

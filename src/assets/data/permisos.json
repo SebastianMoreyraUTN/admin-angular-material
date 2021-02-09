@@ -1,9 +1,10 @@
 [
-    { "nombre": "Reporte1" },
-    { "nombre": "Reporte2" },
-    { "nombre": "Reporte3" },
-    { "nombre": "Reporte4" },
-    { "nombre": "Reporte5" },
-    { "nombre": "Reporte6" },
-    { "nombre": "Reporte7" }
+    { "nombre": "Reportes" },
+    { "nombre": "Usuarios" },
+    { "nombre": "Vistas/Ver" },
+    { "nombre": "Vistas/Editar" },
+    { "nombre": "Tableros/Ver" },
+    { "nombre": "Tableros/Editar" },
+    { "nombre": "Presentaciones/Ver" },
+    { "nombre": "Presentaciones/Editar" }
 ]

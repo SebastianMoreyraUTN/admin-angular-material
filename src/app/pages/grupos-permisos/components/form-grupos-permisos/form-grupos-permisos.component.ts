@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ChangeDetectorRef,
+  Input,
+} from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -8,6 +14,7 @@ import {
 import { DualMultiselectComponent } from 'src/app/shared/dual-multiselect/dual-multiselect.component';
 import Swal from 'sweetalert2';
 import { ReportesService } from '../../../reportes/services/reportes.service';
+import { GruposPermisosService } from '../../services/grupos-permisos.service';
 
 @Component({
   selector: 'app-form-grupos-permisos',
@@ -16,16 +23,7 @@ import { ReportesService } from '../../../reportes/services/reportes.service';
 })
 export class FormGruposPermisosComponent implements OnInit {
   titulo = 'Crear Grupo';
-  permisos: string[] = [
-    'Reportes',
-    'Usuarios',
-    'Vistas/Ver',
-    'Vistas/Editar',
-    'Tableros/Ver',
-    'Tableros/Editar',
-    'Presentaciones/Ver',
-    'Presentaciones/Editar',
-  ];
+  @Input() permisos: string[] = [];
   reportes: any[] = [];
   modo = 'crear';
   grupoForm: FormGroup = new FormGroup({
@@ -35,10 +33,15 @@ export class FormGruposPermisosComponent implements OnInit {
   @ViewChild('multiselect') multiselect: DualMultiselectComponent;
   @ViewChild('reportesMultiselect')
   reportesMultiselect: DualMultiselectComponent;
+  @ViewChild('vistas') vistasMultiselect: DualMultiselectComponent;
+  @ViewChild('tableros') tablerosMultiselect: DualMultiselectComponent;
+  @ViewChild('presentaciones')
+  presentacionesMultiselect: DualMultiselectComponent;
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
   constructor(
     private changeDetector: ChangeDetectorRef,
-    private reportesService: ReportesService
+    private reportesService: ReportesService,
+    private gruposPermisosService: GruposPermisosService
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +49,10 @@ export class FormGruposPermisosComponent implements OnInit {
       res.map((element) => {
         this.reportes.push(element.nombre);
       });
+    });
+    this.gruposPermisosService.getPermisos().subscribe((res) => {
+      res.map((element) => this.permisos.push(element.nombre));
+      this.multiselect.actualizarValores();
     });
   }
 
@@ -58,11 +65,11 @@ export class FormGruposPermisosComponent implements OnInit {
     }
   }
 
-  reporteSeleccionado() {
+  permisoSeleccionado(permiso: string): boolean {
     if (!this.multiselect) {
       return false;
     }
-    if (this.multiselect.seleccionados.find((i) => i === 'Reportes')) {
+    if (this.multiselect.seleccionados.find((i) => i.includes(permiso))) {
       return true;
     }
     return false;
@@ -122,7 +129,7 @@ export class FormGruposPermisosComponent implements OnInit {
     });
     this.multiselect.mapearValores(fila.permisos);
 
-    if (this.reporteSeleccionado()) {
+    if (this.permisoSeleccionado('Reportes')) {
       /*
         Utilizo changeDetector para actualizar el DOM y así,
         lograr que se inicialice reportesMultiselect para luego

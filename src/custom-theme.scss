@@ -442,3 +442,8 @@ mat-option:last-child .mat-option-text {
     display: none;
     position: relative;
 }
+
+.dark-theme .mat-expansion-panel {
+    background: #23232d;
+    color: white;
+}

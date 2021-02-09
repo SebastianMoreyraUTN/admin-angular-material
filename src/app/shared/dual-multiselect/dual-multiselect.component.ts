@@ -52,15 +52,14 @@ export class DualMultiselectComponent implements OnInit {
   seleccionarItem(item) {
     this.items = this.items.filter((i) => i != item);
     this.seleccionados.push(item);
-    this.filtroIzquierda.updateValueAndValidity();
-    this.filtroDerecha.updateValueAndValidity();
+    this.actualizarValores();
   }
 
   quitarItem(item): void {
     this.seleccionados = this.seleccionados.filter((i) => i != item);
     this.items.push(item);
-    this.filtroIzquierda.updateValueAndValidity();
-    this.filtroDerecha.updateValueAndValidity();
+    this.filtroIzquierda.setValue('');
+    this.filtroDerecha.setValue('');
   }
 
   seleccionarTodos() {
@@ -84,8 +83,7 @@ export class DualMultiselectComponent implements OnInit {
           }
           return true;
         });
-        this.filtroIzquierda.updateValueAndValidity();
-        this.filtroDerecha.updateValueAndValidity();
+        this.actualizarValores();
       })
       .unsubscribe();
     console.log('Seleccionados:', this.seleccionados);
@@ -105,8 +103,7 @@ export class DualMultiselectComponent implements OnInit {
           }
           return true;
         });
-        this.filtroIzquierda.updateValueAndValidity();
-        this.filtroDerecha.updateValueAndValidity();
+        this.actualizarValores();
       })
       .unsubscribe();
     console.log('Items:', this.items);
@@ -121,8 +118,7 @@ export class DualMultiselectComponent implements OnInit {
     this.items.push(...this.seleccionados);
     this.seleccionados = [];
     console.log(this.seleccionados);
-    this.filtroIzquierda.updateValueAndValidity();
-    this.filtroDerecha.updateValueAndValidity();
+    this.actualizarValores();
   }
 
   mapearValores(items) {
@@ -141,6 +137,10 @@ export class DualMultiselectComponent implements OnInit {
       }
       return true;
     });
+    this.actualizarValores();
+  }
+
+  actualizarValores() {
     this.filtroIzquierda.updateValueAndValidity();
     this.filtroDerecha.updateValueAndValidity();
   }

@@ -1,0 +1,55 @@
+[{
+        "_id": "60218311710ce2df5dc23e8e",
+        "publico": false,
+        "tipo": "brown",
+        "nombre": "Tamera Joseph",
+        "usuario_creo": "CALCU",
+        "fechaCreacion": "2014-04-14T10:01:59 +03:00",
+        "ultimaFechaModificacion": "2020-10-17T09:25:17 +03:00"
+    },
+    {
+        "_id": "602183115f4b7a3b47a7ac86",
+        "publico": true,
+        "tipo": "blue",
+        "nombre": "Olson Buck",
+        "usuario_creo": "CENTREXIN",
+        "fechaCreacion": "2018-06-25T03:30:00 +03:00",
+        "ultimaFechaModificacion": "2016-08-17T04:25:27 +03:00"
+    },
+    {
+        "_id": "60218311acd9111a3d6b49c2",
+        "publico": true,
+        "tipo": "green",
+        "nombre": "Julia Calhoun",
+        "usuario_creo": "OATFARM",
+        "fechaCreacion": "2015-01-02T06:27:32 +03:00",
+        "ultimaFechaModificacion": "2020-05-22T07:01:54 +03:00"
+    },
+    {
+        "_id": "60218311b442e50e2acd30c6",
+        "publico": false,
+        "tipo": "blue",
+        "nombre": "Hernandez Bullock",
+        "usuario_creo": "MUSAPHICS",
+        "fechaCreacion": "2019-12-09T04:32:22 +03:00",
+        "ultimaFechaModificacion": "2015-07-27T12:22:52 +03:00"
+    },
+    {
+        "_id": "602183119ca2fecd5605963d",
+        "publico": true,
+        "tipo": "blue",
+        "nombre": "Molina Brooks",
+        "usuario_creo": "COMCUBINE",
+        "fechaCreacion": "2019-10-08T11:28:47 +03:00",
+        "ultimaFechaModificacion": "2014-12-23T01:43:56 +03:00"
+    },
+    {
+        "_id": "602183115e315e6ee3a84879",
+        "publico": false,
+        "tipo": "green",
+        "nombre": "Josefa Flynn",
+        "usuario_creo": "CHORIZON",
+        "fechaCreacion": "2014-05-08T11:32:33 +03:00",
+        "ultimaFechaModificacion": "2018-02-25T10:59:10 +03:00"
+    }
+]
