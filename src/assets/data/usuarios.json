@@ -2,27 +2,52 @@
         "nombre": "Sebastian",
         "apellido": "Moreyra",
         "email": "sm@gmail.com",
-        "grupos": ["desarrollo", "soporte"]
+        "grupos": [{
+                "nombre": "Grupo1",
+                "permisos": ["Tableros/Ver", "Reportes"],
+                "reportes": ["Reporte1"]
+            },
+            { "nombre": "Grupo2", "permisos": ["Tableros/Ver"], "reportes": [] },
+            {
+                "nombre": "Grupo3",
+                "permisos": ["Tableros/Ver", "Reportes"],
+                "reportes": ["Reporte2", "Reporte3"]
+            }
+        ]
     },
     {
         "nombre": "Alan",
         "apellido": "Pieckenstainer",
         "email": "a@gmail.com",
-        "grupos": ["rrhh", "comercial"]
+        "grupos": [{
+                "nombre": "Grupo1",
+                "permisos": ["Tableros/Ver", "Reportes"],
+                "reportes": ["Reporte1"]
+            },
+            { "nombre": "Grupo2", "permisos": ["Tableros/Ver"], "reportes": [] },
+            {
+                "nombre": "Grupo3",
+                "permisos": ["Tableros/Ver", "Reportes"],
+                "reportes": ["Reporte2", "Reporte3"]
+            }
+        ]
     },
     {
         "nombre": "Franco",
         "apellido": "Morini",
-        "email": "fm@gmail.com"
+        "email": "fm@gmail.com",
+        "grupos": []
     },
     {
         "nombre": "Hugo",
         "apellido": "Bustos",
-        "email": "hb@gmail.com"
+        "email": "hb@gmail.com",
+        "grupos": []
     },
     {
         "nombre": "Elias",
         "apellido": "Cuevas",
-        "email": "ec@gmail.com"
+        "email": "ec@gmail.com",
+        "grupos": []
     }
 ]

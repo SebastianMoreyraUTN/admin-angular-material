@@ -5,18 +5,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { TablerosPageComponent } from './containers/tableros-page/tableros-page.component';
 import { TablerosRoutingModule } from './tableros-routing.module';
 
-
-
-
-
-
 @NgModule({
   declarations: [TablerosPageComponent],
   imports: [
     CommonModule,
     SharedModule,
     MatToolbarModule,
-    TablerosRoutingModule
-  ]
+    TablerosRoutingModule,
+  ],
 })
-export class TablerosModule { }
+export class TablerosModule {}

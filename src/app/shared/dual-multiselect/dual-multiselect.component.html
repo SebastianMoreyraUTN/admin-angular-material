@@ -13,7 +13,7 @@
                 <!-- Filtro Izquierda -->
                 <mat-form-field appearance="outline">
                     <mat-label>Filtrar</mat-label>
-                    <input type="text" placeholder="" [formControl]="filtroIzquierda" aria-label="Filtrar" matInput />
+                    <input autocomplete="off" type="text" placeholder="" [formControl]="filtroIzquierda" aria-label="Filtrar" matInput />
                     <button mat-button *ngIf="filtroIzquierda.value" matSuffix mat-icon-button aria-label="Borrar" (click)="limpiarFiltro(filtroIzquierda)">
             <mat-icon>close</mat-icon>
           </button>
@@ -26,7 +26,7 @@
                     <mat-selection-list [multiple]="false">
                         <mat-list-option class="animate__animated animate__fadeIn" (click)="seleccionarItem(item)" *ngFor="let item of filtradosIzquierda | async" [value]="item">
                             <mat-icon matListIcon>east</mat-icon>
-                            <h3 matLine>{{ item | titlecase }}</h3>
+                            <h3 matLine>{{ item[this.atributoMostrado] | titlecase }}</h3>
                             <mat-divider></mat-divider>
                         </mat-list-option>
                     </mat-selection-list>
@@ -44,7 +44,7 @@
                 <!-- Filtro Derecha-->
                 <mat-form-field appearance="outline">
                     <mat-label>Filtrar</mat-label>
-                    <input type="text" placeholder="" [formControl]="filtroDerecha" aria-label="Filtrar" matInput />
+                    <input autocomplete="off" type="text" placeholder="" [formControl]="filtroDerecha" aria-label="Filtrar" matInput />
                     <button mat-button *ngIf="filtroDerecha.value" matSuffix mat-icon-button aria-label="Borrar" (click)="limpiarFiltro(filtroDerecha)">
             <mat-icon>close</mat-icon>
           </button>
@@ -56,7 +56,9 @@
                     <mat-selection-list [multiple]="false">
                         <mat-list-option class="animate__animated animate__fadeIn" (click)="quitarItem(seleccionado)" *ngFor="let seleccionado of filtradosDerecha | async" [value]="seleccionado">
                             <mat-icon matListIcon>west</mat-icon>
-                            <h3 matLine>{{ seleccionado | titlecase }}</h3>
+                            <h3 matLine>
+                                {{ seleccionado[this.atributoMostrado] | titlecase }}
+                            </h3>
                             <mat-divider></mat-divider>
                         </mat-list-option>
                     </mat-selection-list>

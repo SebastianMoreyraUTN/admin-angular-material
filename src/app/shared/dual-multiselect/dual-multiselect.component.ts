@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -16,13 +16,22 @@ export class DualMultiselectComponent implements OnInit {
     utilice multiselect deberá pasarle el conjunto de opciones
     que desee.
   */
-  @Input() items: string[] = [];
+  /* Atributo mostrado es una propiedad de entrada que permite conocer
+     cual es el atributo del objeto que se observará en el multiselect
+     */
+  @Input() atributoMostrado: string = '';
+
+  @Input() items: any[] = [];
   @Input() titulo = '';
-  seleccionados: string[] = [];
+  @Output() usuarioSeleccionaItem = new EventEmitter();
+  @Output() usuarioQuitaItem = new EventEmitter();
+  @Output() usuarioAgregaTodos = new EventEmitter();
+  @Output() usuarioQuitaTodos = new EventEmitter();
+  seleccionados: any[] = [];
   filtroIzquierda = new FormControl('');
   filtroDerecha = new FormControl('');
-  filtradosIzquierda: Observable<string[]>;
-  filtradosDerecha: Observable<string[]>;
+  filtradosIzquierda: Observable<any[]>;
+  filtradosDerecha: Observable<any[]>;
   constructor(public temaService: TemaService) {}
 
   ngOnInit(): void {
@@ -39,10 +48,27 @@ export class DualMultiselectComponent implements OnInit {
     );
   }
 
+  /*
+    Cada vez que cambie una propiedad de entrada, se actualizarán los valores
+    para que se muestren correctamente en pantalla.
+  */
+  /*
+      Debemos invocar "actualizarValores" para que se detecte un cambio
+      en los inputs correspondientes a los filtros y así se vean los valores 
+      en pantalla.
+      */
+  ngOnChanges() {
+    this.actualizarValores();
+  }
+
   filtrar(valor: string, listaItems: string[]): string[] {
     const valorFiltrado = valor.toLowerCase();
-    listaItems.sort();
-    return listaItems.filter((i) => i.toLowerCase().includes(valorFiltrado));
+    listaItems.sort((a, b) =>
+      a[this.atributoMostrado] > b[this.atributoMostrado] ? 1 : -1
+    );
+    return listaItems.filter((i) =>
+      i[this.atributoMostrado].toLowerCase().includes(valorFiltrado)
+    );
   }
   /*
     Elimina el item seleccionado de la lista de la izquierda y lo agrega a
@@ -53,6 +79,7 @@ export class DualMultiselectComponent implements OnInit {
     this.items = this.items.filter((i) => i != item);
     this.seleccionados.push(item);
     this.actualizarValores();
+    this.usuarioSeleccionaItem.emit(item);
   }
 
   quitarItem(item): void {
@@ -60,6 +87,7 @@ export class DualMultiselectComponent implements OnInit {
     this.items.push(item);
     this.filtroIzquierda.setValue('');
     this.filtroDerecha.setValue('');
+    this.usuarioQuitaItem.emit(item);
   }
 
   seleccionarTodos() {
@@ -86,8 +114,7 @@ export class DualMultiselectComponent implements OnInit {
         this.actualizarValores();
       })
       .unsubscribe();
-    console.log('Seleccionados:', this.seleccionados);
-    console.log('Se quedaron en items:', this.items);
+    this.usuarioAgregaTodos.emit();
   }
 
   quitarTodos() {
@@ -106,8 +133,7 @@ export class DualMultiselectComponent implements OnInit {
         this.actualizarValores();
       })
       .unsubscribe();
-    console.log('Items:', this.items);
-    console.log('Se quedaron en seleccionados:', this.seleccionados);
+    this.usuarioQuitaTodos.emit();
   }
 
   limpiarFiltro(formControl: FormControl): void {
@@ -117,7 +143,6 @@ export class DualMultiselectComponent implements OnInit {
   limpiar() {
     this.items.push(...this.seleccionados);
     this.seleccionados = [];
-    console.log(this.seleccionados);
     this.actualizarValores();
   }
 

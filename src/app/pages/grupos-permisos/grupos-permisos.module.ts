@@ -4,9 +4,17 @@ import { GruposPermisosPageComponent } from './containers/grupos-permisos-page/g
 import { GruposPermisosRoutingModule } from './grupos-permisos-routing.module';
 import { FormGruposPermisosComponent } from './components/form-grupos-permisos/form-grupos-permisos.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { NotificationModule } from '../notification/notification.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [GruposPermisosPageComponent, FormGruposPermisosComponent],
-  imports: [SharedModule, GruposPermisosRoutingModule, MatExpansionModule],
+  imports: [
+    SharedModule,
+    GruposPermisosRoutingModule,
+    MatExpansionModule,
+    NotificationModule,
+    MatSnackBarModule,
+  ],
 })
 export class GruposPermisosModule {}

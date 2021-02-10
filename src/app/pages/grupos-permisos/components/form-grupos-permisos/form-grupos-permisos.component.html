@@ -7,57 +7,67 @@
             </h3>
         </mat-card-title>
         <mat-card-content>
-            <app-dual-multiselect [titulo]="'Permisos para el Grupo'" [items]="permisos" #multiselect></app-dual-multiselect>
+            <app-dual-multiselect (usuarioAgregaTodos)="mostrarTodos()" (usuarioQuitaTodos)="quitarTodos()" (usuarioQuitaItem)="cancelarSeleccion($event)" (usuarioSeleccionaItem)="notificarSeleccion($event)" [titulo]="'Permisos para el Grupo'" [atributoMostrado]="'nombre'"
+                [items]="permisos" #multiselect></app-dual-multiselect>
             <form [formGroup]="grupoForm">
                 <div class="row">
                     <div class="col 12">
                         <mat-form-field appearance="outline">
                             <mat-label>Nombre</mat-label>
-                            <input #input formControlName="nombre" maxlength="16" matInput />
+                            <input autocomplete="off" #input formControlName="nombre" maxlength="16" matInput />
                             <mat-error *ngIf="grupoForm.controls.nombre.invalid">{{ mostrarError(grupoForm.controls.nombre) }}
                             </mat-error>
                             <mat-hint align="end">Max. Caracteres {{ input.value?.length || 0 }}/16</mat-hint>
                         </mat-form-field>
                     </div>
-                    <mat-accordion>
-                        <mat-expansion-panel expanded="true" *ngIf="this.permisoSeleccionado('Reportes')">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title> Reportes </mat-panel-title>
-                                <mat-panel-description>
-                                    <span> Reportes a los que el usuario tendrá acceso</span>
-                                </mat-panel-description>
-                            </mat-expansion-panel-header>
+                    <mat-accordion multi="true">
+                        <div id="#reportes">
+                            <mat-expansion-panel class="mat-elevation-z14" expanded="true" *ngIf="this.reportesSeleccionado">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title> Reportes </mat-panel-title>
+                                    <mat-panel-description>
+                                        <span> Reportes a los que el usuario tendrá acceso</span>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
 
-                            <app-dual-multiselect #reportesMultiselect [titulo]="'Reportes del Grupo'" [items]="reportes"></app-dual-multiselect>
-                        </mat-expansion-panel>
-
-                        <mat-expansion-panel expanded="true" *ngIf="this.permisoSeleccionado('Vistas')">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title> Vistas </mat-panel-title>
-                                <mat-panel-description>
-                                    <span> Vistas a las que el usuario tendrá acceso</span>
-                                </mat-panel-description>
-                            </mat-expansion-panel-header>
-                        </mat-expansion-panel>
-
-                        <mat-expansion-panel expanded="true" *ngIf="this.permisoSeleccionado('Tableros')">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title> Tableros </mat-panel-title>
-                                <mat-panel-description>
-                                    <span>Tableros a los que el usuario tendrá acceso</span>
-                                </mat-panel-description>
-                            </mat-expansion-panel-header>
-                        </mat-expansion-panel>
-                        <mat-expansion-panel expanded="true" *ngIf="this.permisoSeleccionado('Presentaciones')">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title> Presentaciones </mat-panel-title>
-                                <mat-panel-description>
-                                    <span>
-                    Presentaciones a las que el usuario tendrá acceso
-                  </span>
-                                </mat-panel-description>
-                            </mat-expansion-panel-header>
-                        </mat-expansion-panel>
+                                <app-dual-multiselect #reportesMultiselect [atributoMostrado]="'nombre'" [titulo]="'Reportes del Grupo'" [items]="reportes"></app-dual-multiselect>
+                            </mat-expansion-panel>
+                        </div>
+                        <div id="#vistas">
+                            <mat-expansion-panel class="mat-elevation-z14" expanded="true" *ngIf="this.vistasSeleccionado">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title> Vistas </mat-panel-title>
+                                    <mat-panel-description>
+                                        <span> Vistas a las que el usuario tendrá acceso</span>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <app-dual-multiselect #vistasMultiselect [atributoMostrado]="'nombre'" [titulo]="'Vistas del Grupo'" [items]="vistas"></app-dual-multiselect>
+                            </mat-expansion-panel>
+                        </div>
+                        <div id="#tableros">
+                            <mat-expansion-panel class="mat-elevation-z14" expanded="true" *ngIf="this.tablerosSeleccionado">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title> Tableros </mat-panel-title>
+                                    <mat-panel-description>
+                                        <span>Tableros a los que el usuario tendrá acceso</span>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <app-dual-multiselect #tablerosMultiselect [atributoMostrado]="'nombre'" [titulo]="'Tableros del Grupo'" [items]="tableros"></app-dual-multiselect>
+                            </mat-expansion-panel>
+                        </div>
+                        <div id="#presentaciones">
+                            <mat-expansion-panel expanded="true" *ngIf="this.presentacionesSeleccionado">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title> Presentaciones </mat-panel-title>
+                                    <mat-panel-description>
+                                        <span>
+                      Presentaciones a las que el usuario tendrá acceso
+                    </span>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <app-dual-multiselect #presentacione sMultiselect [atributoMostrado]="'nombre'" [titulo]="'Presentaciones del Grupo'" [items]="presentaciones"></app-dual-multiselect>
+                            </mat-expansion-panel>
+                        </div>
                     </mat-accordion>
                 </div>
                 <div class="d-flex justify-content-end">

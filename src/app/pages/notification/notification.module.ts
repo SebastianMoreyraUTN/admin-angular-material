@@ -9,18 +9,17 @@ import {
   ErrorToastrComponent,
   InfoToastrComponent,
   NotificationPageComponent,
-  SuccessToastComponent
+  SuccessToastComponent,
 } from './containers';
 import { NotificationRoutingModule } from './notification-routing.module';
 import { SharedModule } from '../../shared/shared.module';
-
 
 @NgModule({
   declarations: [
     NotificationPageComponent,
     SuccessToastComponent,
     ErrorToastrComponent,
-    InfoToastrComponent
+    InfoToastrComponent,
   ],
   imports: [
     CommonModule,
@@ -29,7 +28,13 @@ import { SharedModule } from '../../shared/shared.module';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    SharedModule
-  ]
+    SharedModule,
+  ],
+  exports: [
+    NotificationPageComponent,
+    SuccessToastComponent,
+    ErrorToastrComponent,
+    InfoToastrComponent,
+  ],
 })
-export class NotificationModule { }
+export class NotificationModule {}

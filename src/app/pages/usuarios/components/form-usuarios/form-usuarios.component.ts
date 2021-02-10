@@ -7,15 +7,7 @@ import {
 } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { DualMultiselectComponent } from '../../../../shared/dual-multiselect/dual-multiselect.component';
-
-const GRUPOS = [
-  'desarrollo',
-  'soporte',
-  'comercial',
-  'riesgo',
-  'operaciones',
-  'gerencia',
-];
+import { GruposPermisosService } from '../../../grupos-permisos/services/grupos-permisos.service';
 
 @Component({
   selector: 'app-form-usuarios',
@@ -23,7 +15,6 @@ const GRUPOS = [
   styleUrls: ['./form-usuarios.component.scss'],
 })
 export class FormUsuariosComponent implements OnInit {
-  grupos: any[] = GRUPOS;
   usuarioForm = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     apellido: new FormControl('', [Validators.required]),
@@ -33,11 +24,16 @@ export class FormUsuariosComponent implements OnInit {
   });
   titulo = 'Crear Usuario';
   modo = 'crear';
+  grupos: any[] = [];
   @ViewChild('multiselect') multiselect: DualMultiselectComponent;
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
-  constructor() {}
+  constructor(private gruposPermisosService: GruposPermisosService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.gruposPermisosService.getGrupos().subscribe((res) => {
+      this.grupos = res;
+    });
+  }
 
   mostrarError(formControl) {
     if (formControl.hasError('required')) {
