@@ -21,6 +21,8 @@ import { TablerosService } from '../../../tableros/services/tableros.service';
 import { VistasService } from '../../../vistas/services/vistas.service';
 import { PresentacionesService } from '../../../presentaciones/services/presentaciones.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Grupo } from '../../../../models/grupo.model';
+import { object } from '@amcharts/amcharts4/core';
 @Component({
   selector: 'app-form-grupos-permisos',
   templateUrl: './form-grupos-permisos.component.html',
@@ -43,6 +45,9 @@ export class FormGruposPermisosComponent implements OnInit {
     nombre: new FormControl('', [Validators.required]),
   });
   scrollToElement: any;
+  requiredErrorEnMultiselects = '';
+  grupoActual: Grupo = new Grupo();
+
   @ViewChild('multiselect') multiselect: DualMultiselectComponent;
   @ViewChild('prueba') multiselectRef: ElementRef;
   @ViewChild('reportesMultiselect')
@@ -109,12 +114,24 @@ export class FormGruposPermisosComponent implements OnInit {
 
   guardarGrupo(): void {
     if (this.validarPermisosSeleccionados()) {
-      if (this.validarReportesSeleccionados()) {
+      let grupo: Grupo = new Grupo();
+      this.grupoActual.nombre = this.grupoForm.get('nombre').value;
+      this.grupoActual.permisos = this.multiselect.seleccionados;
+      this.validarCadaMultiselect();
+      if (!this.requiredErrorEnMultiselects) {
+        console.log(this.grupoActual);
         Swal.fire({
           position: 'center',
           icon: 'success',
           text: 'El Usuario ha sido guardado correctamente',
           showConfirmButton: true,
+          showCloseButton: true,
+        });
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          text: `No se han asignado ${this.requiredErrorEnMultiselects}`,
           showCloseButton: true,
         });
       }
@@ -140,6 +157,12 @@ export class FormGruposPermisosComponent implements OnInit {
       return false;
     }
   }
+  /*
+    El método cancelarSelección se ejecuta cada vez que
+    se quita un item de la lista de seleccionados del multiselect.
+    Si un elemento es quitado, automáticamente ocultaremos el multiselect
+    que se corresponde al elemento.
+  */
   cancelarSeleccion(item): void {
     const permiso = item.nombre.toLowerCase();
     if (permiso.includes('reportes')) {
@@ -155,6 +178,13 @@ export class FormGruposPermisosComponent implements OnInit {
       this.presentacionesSeleccionado = false;
     }
   }
+
+  /*
+    El método notificarSelección se ejecuta cada vez que
+    se agrega un item a la lista de seleccionados del multiselect.
+    Si un elemento es agregad, automáticamente mostraremos una notificación
+    que nos permitirá hacer un "scroll" hasta el multiselect correspondiente.
+  */
   notificarSeleccion(item) {
     const idElemento = this.obtenerReferenciaItemSeleccionado(item.nombre);
     if (idElemento) {
@@ -208,20 +238,6 @@ export class FormGruposPermisosComponent implements OnInit {
     this.presentacionesSeleccionado = false;
   }
 
-  validarReportesSeleccionados() {
-    if (!this.reportesMultiselect) {
-      return true;
-    } else if (this.reportesMultiselect.seleccionados.length > 0) {
-      return true;
-    }
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'No has asignado ningún reporte al grupo!',
-    });
-    return false;
-  }
-
   mapearValores(fila): void {
     this.grupoForm.patchValue({
       nombre: fila.nombre,
@@ -239,6 +255,11 @@ export class FormGruposPermisosComponent implements OnInit {
     }
   }
 
+  /* 
+    Retorna el Id del contenedor del multiselect correspondiente al
+    ítem seleccionado, además de encargarse de setear en TRUE la propiedad que
+    determina si se muestra o no el multiselect del permiso correspondiente.
+  */
   obtenerReferenciaItemSeleccionado(nombrePermiso: string): string {
     let permiso: string = nombrePermiso.toLowerCase();
     if (permiso.includes('reportes')) {
@@ -258,6 +279,65 @@ export class FormGruposPermisosComponent implements OnInit {
       return '#presentaciones';
     } else {
       return '';
+    }
+  }
+
+  /*
+    Se valida que cada permiso seleccionado tenga al menos
+    una opción elegida en su correspondiente multiselect.
+    Recibe un grupo como parámetro para poder asignarle al mismo,
+    en cada array de permisos,las opciones elegidas en cada multiselect.
+  
+    */
+  validarCadaMultiselect(): void {
+    this.requiredErrorEnMultiselects = '';
+    this.tieneItemsSeleccionados(
+      this.reportesSeleccionado,
+      'reportes',
+      this.reportesMultiselect,
+      'Reportes'
+    );
+    this.tieneItemsSeleccionados(
+      this.vistasSeleccionado,
+      'vistas',
+      this.vistasMultiselect,
+      'Vistas'
+    );
+    this.tieneItemsSeleccionados(
+      this.tablerosSeleccionado,
+      'tableros',
+      this.tablerosMultiselect,
+      'Tableros'
+    );
+    this.tieneItemsSeleccionados(
+      this.presentacionesSeleccionado,
+      'presentaciones',
+      this.presentacionesMultiselect,
+      'Presentaciones'
+    );
+  }
+
+  /* 
+    permisoSelccionado: para determinar si un permiso ha sido elegido.
+    objectKey: nombre de la propiedad que se corresponde con el array de opciones
+    de un permiso seleccionado. Por ejemplo: objectKey = 'reportes'. De esta manera 
+    asignaremos los reportes seleccionados al array de reportes.
+    permisoMultiselect: multiselect correspondiente al permiso.
+    sinItems: string que se le concatena a this.requiredErrorEnMultiselects 
+    en caso de que el multiselect no tenga items seleccionados.
+  */
+  tieneItemsSeleccionados(
+    permisoSeleccionado: boolean,
+    objectKey: string,
+    permisoMultiselect: DualMultiselectComponent,
+    sinItems: string
+  ): void {
+    this.grupoActual[objectKey] = [];
+    if (permisoSeleccionado) {
+      this.grupoActual[objectKey] = permisoMultiselect.seleccionados;
+      if (permisoMultiselect.seleccionados.length < 1) {
+        this.requiredErrorEnMultiselects = `${this.requiredErrorEnMultiselects} ${sinItems}`;
+      }
     }
   }
 }

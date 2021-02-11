@@ -7,11 +7,14 @@
             </h3>
         </mat-card-title>
         <mat-card-content>
+            <!-- Multiselect para seleccionar los permisos -->
             <app-dual-multiselect (usuarioAgregaTodos)="mostrarTodos()" (usuarioQuitaTodos)="quitarTodos()" (usuarioQuitaItem)="cancelarSeleccion($event)" (usuarioSeleccionaItem)="notificarSeleccion($event)" [titulo]="'Permisos para el Grupo'" [atributoMostrado]="'nombre'"
                 [items]="permisos" #multiselect></app-dual-multiselect>
+
             <form [formGroup]="grupoForm">
                 <div class="row">
                     <div class="col 12">
+                        <!-- Form field para el nombre del grupo -->
                         <mat-form-field appearance="outline">
                             <mat-label>Nombre</mat-label>
                             <input autocomplete="off" #input formControlName="nombre" maxlength="16" matInput />
@@ -20,8 +23,12 @@
                             <mat-hint align="end">Max. Caracteres {{ input.value?.length || 0 }}/16</mat-hint>
                         </mat-form-field>
                     </div>
+
+                    <!-- Paneles para los distintos multiselects -->
                     <mat-accordion multi="true">
+                        <!--div con id para realizar el scroll()-->
                         <div id="#reportes">
+                            <!-- Panel para multiselect de reportes -->
                             <mat-expansion-panel class="mat-elevation-z14" expanded="true" *ngIf="this.reportesSeleccionado">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title> Reportes </mat-panel-title>
@@ -33,7 +40,10 @@
                                 <app-dual-multiselect #reportesMultiselect [atributoMostrado]="'nombre'" [titulo]="'Reportes del Grupo'" [items]="reportes"></app-dual-multiselect>
                             </mat-expansion-panel>
                         </div>
+
+                        <!--div con id para realizar el scroll()-->
                         <div id="#vistas">
+                            <!-- Panel para multiselect de vistas -->
                             <mat-expansion-panel class="mat-elevation-z14" expanded="true" *ngIf="this.vistasSeleccionado">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title> Vistas </mat-panel-title>
@@ -44,7 +54,10 @@
                                 <app-dual-multiselect #vistasMultiselect [atributoMostrado]="'nombre'" [titulo]="'Vistas del Grupo'" [items]="vistas"></app-dual-multiselect>
                             </mat-expansion-panel>
                         </div>
+
+                        <!--div con id para realizar el scroll()-->
                         <div id="#tableros">
+                            <!-- Panel para multiselect de tableros -->
                             <mat-expansion-panel class="mat-elevation-z14" expanded="true" *ngIf="this.tablerosSeleccionado">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title> Tableros </mat-panel-title>
@@ -55,7 +68,10 @@
                                 <app-dual-multiselect #tablerosMultiselect [atributoMostrado]="'nombre'" [titulo]="'Tableros del Grupo'" [items]="tableros"></app-dual-multiselect>
                             </mat-expansion-panel>
                         </div>
+
+                        <!--div con id para realizar el scroll()-->
                         <div id="#presentaciones">
+                            <!-- Panel para multiselect de presentaciones -->
                             <mat-expansion-panel expanded="true" *ngIf="this.presentacionesSeleccionado">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title> Presentaciones </mat-panel-title>
@@ -65,7 +81,7 @@
                     </span>
                                     </mat-panel-description>
                                 </mat-expansion-panel-header>
-                                <app-dual-multiselect #presentacione sMultiselect [atributoMostrado]="'nombre'" [titulo]="'Presentaciones del Grupo'" [items]="presentaciones"></app-dual-multiselect>
+                                <app-dual-multiselect #presentacionesMultiselect [atributoMostrado]="'nombre'" [titulo]="'Presentaciones del Grupo'" [items]="presentaciones"></app-dual-multiselect>
                             </mat-expansion-panel>
                         </div>
                     </mat-accordion>
