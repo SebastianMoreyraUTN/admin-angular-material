@@ -100,3 +100,10 @@
 .ver {
     color: #536dfe !important;
 }
+
+.example-loading-shade {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

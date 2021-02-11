@@ -25,6 +25,7 @@ export class TableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  isLoadingResults: boolean = false;
   actualData: any[] = [];
   @Input() data: Observable<any>;
   @Input() displayedColumns: string[];
@@ -38,13 +39,18 @@ export class TableComponent implements OnInit {
   }
 
   loadData() {
-    this.data.subscribe((res) => {
-      this.actualData = res;
-      this.dataSource = new MatTableDataSource<any>(this.actualData);
-      this.dataSource.paginator = this.paginator;
-      this.traducirPaginador();
-      this.dataSource.sort = this.sort;
-    });
+    this.isLoadingResults = true;
+    this.dataSource = new MatTableDataSource<any>([]);
+    setTimeout(() => {
+      this.data.subscribe((res) => {
+        this.actualData = res;
+        this.dataSource = new MatTableDataSource<any>(this.actualData);
+        this.dataSource.paginator = this.paginator;
+        this.traducirPaginador();
+        this.dataSource.sort = this.sort;
+        this.isLoadingResults = false;
+      });
+    }, 3000);
   }
 
   applyFilter(event: Event): void {

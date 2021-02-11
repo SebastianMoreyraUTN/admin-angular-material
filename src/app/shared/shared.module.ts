@@ -10,6 +10,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { TableComponent } from './table/table.component';
 import { DualMultiselectComponent } from './dual-multiselect/dual-multiselect.component';
 import { MaterialModule } from '../angular-material/material.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MaterialModule } from '../angular-material/material.module';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     CommonModule,
