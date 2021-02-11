@@ -20,6 +20,7 @@ export class TableComponent implements OnInit {
   constructor() {}
 
   dataSource: MatTableDataSource<any>;
+  delete = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -33,6 +34,10 @@ export class TableComponent implements OnInit {
   @Output() clickBoton = new EventEmitter();
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData() {
     this.data.subscribe((res) => {
       this.actualData = res;
       this.dataSource = new MatTableDataSource<any>(this.actualData);

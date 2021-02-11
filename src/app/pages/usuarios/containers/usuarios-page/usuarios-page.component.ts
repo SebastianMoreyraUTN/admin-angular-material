@@ -5,6 +5,7 @@ import { FormUsuariosComponent } from '../../components/form-usuarios/form-usuar
 import { UsuariosService } from '../../services/usuarios.service';
 import { Observable } from 'rxjs';
 import { Usuario } from '../../../../models/usuario.model';
+import { TableComponent } from 'src/app/shared/table/table.component';
 
 @Component({
   selector: 'app-usuarios-page',
@@ -24,6 +25,7 @@ export class UsuariosPageComponent implements OnInit {
   botonesTabla = [buttons.editar, buttons.eliminar];
   @ViewChild('scroll') formDiv: ElementRef;
   @ViewChild('form') form: FormUsuariosComponent;
+  @ViewChild('table') table: TableComponent;
   constructor(private usuarioService: UsuariosService) {}
 
   ngOnInit(): void {
@@ -56,6 +58,9 @@ export class UsuariosPageComponent implements OnInit {
       if (result.isConfirmed) {
         Swal.fire('', 'El usuario se ha eliminado con éxito', 'success');
         console.log('eliminado');
+        this.table.data = this.usuarioService.getUsuariosOnDelete();
+        this.table.delete = true;
+        this.table.loadData();
       }
     });
   }

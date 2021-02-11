@@ -1,17 +1,225 @@
 [{
         "nombre": "Grupo1",
-        "permisos": ["Tableros/Ver", "Reportes"],
-        "reportes": ["Reporte1"]
+        "permisos": [
+            { "nombre": "Reportes" },
+            { "nombre": "Usuarios" },
+
+            { "nombre": "Vistas/Editar" },
+            { "nombre": "Tableros/Ver" },
+
+            { "nombre": "Presentaciones/Ver" }
+        ],
+        "reportes": [{
+                "actualizacion": "manual",
+                "actualizado": "Ne",
+                "consulta": "20.179",
+                "hash": "hash",
+                "nombre": "Reporte10",
+                " url": "Neon"
+            },
+
+            {
+                "actualizacion": "manual",
+                "actualizado": "Li",
+                "consulta": "6.941",
+                " hash": "hash",
+                "nombre": "Reporte3",
+                " url": "Lithium"
+            }
+        ],
+        "presentaciones": [{
+            " _id": "6022848ea29ca233e465c9ce",
+            "nombre": "Presentación2"
+        }],
+        "vistas": [{
+                "nombre": "Berta Potts",
+                " _id": "6022848e4595dd677aad9768"
+            },
+            {
+                " _id": "6022848ef613e08ddfef7174",
+                "nombre": "Shepard Rogers"
+            }
+        ],
+        "tableros": [{
+                "fechaCreacion": "2014-05-08T11:32:33 +03:00",
+                "nombre": "Josefa Flynn",
+                "publico": false,
+                "tipo": "green",
+                " ultimaFechaModificacion": "2018-02-25T10:59:10 +03:00",
+                "usuario_creo": "SEBA",
+                " _id": "602183115e315e6ee3a84879"
+            },
+            {
+                "fechaCreacion": "2014-05-08T11:32:33 +03:00",
+                "nombre": "Josefa Flynn",
+                "publico": false,
+                "tipo": "green",
+                " ultimaFechaModificacion": "2018-02-25T10:59:10 +03:00",
+                "usuario_creo": "SEBA",
+                " _id": "602183115e315e6ee3a84879"
+            }
+        ]
     },
-    { "nombre": "Grupo2", "permisos": ["Tableros/Ver"], "reportes": [] },
+    {
+        "nombre": "Grupo2",
+        "permisos": ["Tableros/Ver"],
+        "reportes": [{
+                "actualizacion": "manual",
+                "actualizado": "Ne",
+                "consulta": "20.179",
+                "hash": "hash",
+                "nombre": "Reporte10",
+                " url": "Neon"
+            },
+
+            {
+                "actualizacion": "manual",
+                "actualizado": "Li",
+                "consulta": "6.941",
+                " hash": "hash",
+                "nombre": "Reporte3",
+                " url": "Lithium"
+            }
+        ],
+        "presentaciones": [{
+            " _id": "6022848ea29ca233e465c9ce",
+            "nombre": "Presentación2"
+        }],
+        "vistas": [{
+                "nombre": "Berta Potts",
+                " _id": "6022848e4595dd677aad9768"
+            },
+            {
+                " _id": "6022848ef613e08ddfef7174",
+                "nombre": "Shepard Rogers"
+            }
+        ],
+        "tableros": [{
+                "fechaCreacion": "2014-05-08T11:32:33 +03:00",
+                "nombre": "Josefa Flynn",
+                "publico": false,
+                "tipo": "green",
+                " ultimaFechaModificacion": "2018-02-25T10:59:10 +03:00",
+                "usuario_creo": "SEBA",
+                " _id": "602183115e315e6ee3a84879"
+            },
+            {
+                "fechaCreacion": "2014-05-08T11:32:33 +03:00",
+                "nombre": "Josefa Flynn",
+                "publico": false,
+                "tipo": "green",
+                " ultimaFechaModificacion": "2018-02-25T10:59:10 +03:00",
+                "usuario_creo": "SEBA",
+                " _id": "602183115e315e6ee3a84879"
+            }
+        ]
+    },
     {
         "nombre": "Grupo3",
         "permisos": ["Tableros/Ver", "Reportes"],
-        "reportes": ["Reporte2", "Reporte3"]
+        "reportes": [{
+                "actualizacion": "manual",
+                "actualizado": "Ne",
+                "consulta": "20.179",
+                "hash": "hash",
+                "nombre": "Reporte10",
+                " url": "Neon"
+            },
+
+            {
+                "actualizacion": "manual",
+                "actualizado": "Li",
+                "consulta": "6.941",
+                " hash": "hash",
+                "nombre": "Reporte3",
+                " url": "Lithium"
+            }
+        ],
+        "presentaciones": [{
+            " _id": "6022848ea29ca233e465c9ce",
+            "nombre": "Presentación2"
+        }],
+        "vistas": [{
+                "nombre": "Berta Potts",
+                " _id": "6022848e4595dd677aad9768"
+            },
+            {
+                " _id": "6022848ef613e08ddfef7174",
+                "nombre": "Shepard Rogers"
+            }
+        ],
+        "tableros": [{
+                "fechaCreacion": "2014-05-08T11:32:33 +03:00",
+                "nombre": "Josefa Flynn",
+                "publico": false,
+                "tipo": "green",
+                " ultimaFechaModificacion": "2018-02-25T10:59:10 +03:00",
+                "usuario_creo": "SEBA",
+                " _id": "602183115e315e6ee3a84879"
+            },
+            {
+                "fechaCreacion": "2014-05-08T11:32:33 +03:00",
+                "nombre": "Josefa Flynn",
+                "publico": false,
+                "tipo": "green",
+                " ultimaFechaModificacion": "2018-02-25T10:59:10 +03:00",
+                "usuario_creo": "SEBA",
+                " _id": "602183115e315e6ee3a84879"
+            }
+        ]
     },
     {
         "nombre": "Grupo4",
         "permisos": ["Tableros/Ver", "Reportes"],
-        "reportes": ["Reporte2", "Reporte3"]
+        "reportes": [{
+                "actualizacion": "manual",
+                "actualizado": "Ne",
+                "consulta": "20.179",
+                "hash": "hash",
+                "nombre": "Reporte10",
+                " url": "Neon"
+            },
+
+            {
+                "actualizacion": "manual",
+                "actualizado": "Li",
+                "consulta": "6.941",
+                " hash": "hash",
+                "nombre": "Reporte3",
+                " url": "Lithium"
+            }
+        ],
+        "presentaciones": [{
+            " _id": "6022848ea29ca233e465c9ce",
+            "nombre": "Presentación2"
+        }],
+        "vistas": [{
+                "nombre": "Berta Potts",
+                " _id": "6022848e4595dd677aad9768"
+            },
+            {
+                " _id": "6022848ef613e08ddfef7174",
+                "nombre": "Shepard Rogers"
+            }
+        ],
+        "tableros": [{
+                "fechaCreacion": "2014-05-08T11:32:33 +03:00",
+                "nombre": "Josefa Flynn",
+                "publico": false,
+                "tipo": "green",
+                " ultimaFechaModificacion": "2018-02-25T10:59:10 +03:00",
+                "usuario_creo": "SEBA",
+                " _id": "602183115e315e6ee3a84879"
+            },
+            {
+                "fechaCreacion": "2014-05-08T11:32:33 +03:00",
+                "nombre": "Josefa Flynn",
+                "publico": false,
+                "tipo": "green",
+                " ultimaFechaModificacion": "2018-02-25T10:59:10 +03:00",
+                "usuario_creo": "SEBA",
+                " _id": "602183115e315e6ee3a84879"
+            }
+        ]
     }
 ]

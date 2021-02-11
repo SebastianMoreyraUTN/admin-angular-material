@@ -22,7 +22,6 @@ import { VistasService } from '../../../vistas/services/vistas.service';
 import { PresentacionesService } from '../../../presentaciones/services/presentaciones.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Grupo } from '../../../../models/grupo.model';
-import { object } from '@amcharts/amcharts4/core';
 @Component({
   selector: 'app-form-grupos-permisos',
   templateUrl: './form-grupos-permisos.component.html',
@@ -242,16 +241,32 @@ export class FormGruposPermisosComponent implements OnInit {
     this.grupoForm.patchValue({
       nombre: fila.nombre,
     });
+    console.log(this.multiselect);
     this.multiselect.mapearValores(fila.permisos);
 
     if (this.permisoSeleccionado('Reportes')) {
-      /*
-        Utilizo changeDetector para actualizar el DOM y así,
-        lograr que se inicialice reportesMultiselect para luego
-        poder ejecutar sus métodos.
-      */
+      this.reportesSeleccionado = true;
+
       this.changeDetector.detectChanges();
       this.reportesMultiselect.mapearValores(fila.reportes);
+    }
+    if (this.permisoSeleccionado('Vistas')) {
+      this.vistasSeleccionado = true;
+
+      this.changeDetector.detectChanges();
+      this.vistasMultiselect.mapearValores(fila.vistas);
+    }
+    if (this.permisoSeleccionado('Tableros')) {
+      this.tablerosSeleccionado = true;
+
+      this.changeDetector.detectChanges();
+      this.tablerosMultiselect.mapearValores(fila.tableros);
+    }
+    if (this.permisoSeleccionado('Presentaciones')) {
+      this.presentacionesSeleccionado = true;
+
+      this.changeDetector.detectChanges();
+      this.presentacionesMultiselect.mapearValores(fila.presentaciones);
     }
   }
 

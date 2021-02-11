@@ -156,7 +156,7 @@ export class DualMultiselectComponent implements OnInit {
     this.seleccionados = items;
     this.items = this.items.filter((i) => {
       for (let index = 0; index < items.length; index++) {
-        if (i === items[index]) {
+        if (i[this.atributoMostrado] === items[index][this.atributoMostrado]) {
           return false;
         }
       }
