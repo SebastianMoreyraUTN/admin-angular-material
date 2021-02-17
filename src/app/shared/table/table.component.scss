@@ -107,3 +107,9 @@
     align-items: center;
     justify-content: center;
 }
+
+mat-paginator {
+    @media (max-width: $small) {
+        width: 100%;
+    }
+}

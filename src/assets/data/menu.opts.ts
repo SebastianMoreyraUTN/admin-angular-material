@@ -1,35 +1,37 @@
-export const options = [{
+export const options = [
+  {
     name: 'Inicio',
     icon: 'home',
-    redirectTo: '/inicio'
-},
-{
+    redirectTo: '/inicio',
+  },
+  {
     name: 'Usuarios',
     icon: 'people',
-    redirectTo: '/usuarios'
-},
-{
-    name: 'Grupos - Permisos',
+    redirectTo: '/usuarios',
+  },
+  {
+    name: 'Grupos',
     icon: 'security',
-    redirectTo: '/grupos-permisos'
-},
-{
+    redirectTo: '/grupos-permisos',
+  },
+  {
     name: 'Reportes',
     icon: 'assignment',
-    redirectTo: '/reportes'
-},
-{
+    redirectTo: '/reportes',
+  },
+  {
     name: 'Vistas',
     icon: 'insert_chart',
-    redirectTo: '/vistas'
-},
-{
+    redirectTo: '/vistas',
+  },
+  {
     name: 'Tableros',
     icon: 'dashboard',
-    redirectTo: '/tableros'
-},
-{
+    redirectTo: '/tableros',
+  },
+  {
     name: 'Presentaciones',
     icon: 'movie_creation',
-    redirectTo: '/presentaciones'
-}];
+    redirectTo: '/presentaciones',
+  },
+];

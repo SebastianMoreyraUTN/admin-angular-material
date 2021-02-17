@@ -242,6 +242,7 @@ export class FormGruposPermisosComponent implements OnInit {
   }
 
   mapearValores(fila): void {
+    this.titulo = 'Editar Grupo';
     this.grupoForm.patchValue({
       nombre: fila.nombre,
     });

@@ -84,4 +84,33 @@ export class FormPerfilUsuarioComponent implements OnInit {
       this.temaService.update('light-theme');
     }
   }
+
+  eliminarPasswordValidators() {
+    this.usuarioForm.get('password').clearValidators();
+    this.usuarioForm.get('password').updateValueAndValidity();
+    this.usuarioForm.get('confirmarPassword').clearValidators();
+    this.usuarioForm.get('confirmarPassword').updateValueAndValidity();
+  }
+
+  agregarPasswordValidators() {
+    this.usuarioForm.get('password').setValidators([Validators.required]);
+    this.usuarioForm.get('password').updateValueAndValidity();
+    this.usuarioForm
+      .get('confirmarPassword')
+      .setValidators([Validators.required]);
+    this.usuarioForm.get('confirmarPassword').updateValueAndValidity();
+  }
+
+  validarCamposAlEditar() {
+    if (
+      (!this.usuarioForm.get('password').value &&
+        this.usuarioForm.get('confirmarPassword').value) ||
+      (this.usuarioForm.get('password').value &&
+        !this.usuarioForm.get('confirmarPassword').value)
+    ) {
+      this.agregarPasswordValidators();
+    } else {
+      this.eliminarPasswordValidators();
+    }
+  }
 }

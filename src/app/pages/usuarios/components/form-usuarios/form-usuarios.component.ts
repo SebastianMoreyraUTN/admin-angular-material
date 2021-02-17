@@ -60,7 +60,10 @@ export class FormUsuariosComponent implements OnInit {
       nombre: fila.nombre,
       apellido: fila.apellido,
       email: fila.email,
+      password: '',
+      confirmPassword: '',
     });
+    this.eliminarPasswordValidators();
     this.multiselect.mapearValores(fila.grupos);
   }
 
@@ -69,6 +72,7 @@ export class FormUsuariosComponent implements OnInit {
     this.titulo = 'Crear Usuario';
     this.modo = 'crear';
     this.multiselect.limpiar();
+    this.agregarPasswordValidators();
   }
 
   guardarUsuario() {
@@ -116,6 +120,37 @@ export class FormUsuariosComponent implements OnInit {
         text: 'No has asignado ningún grupo al usuario!',
       });
       return false;
+    }
+  }
+
+  eliminarPasswordValidators() {
+    this.usuarioForm.get('password').clearValidators();
+    this.usuarioForm.get('password').updateValueAndValidity();
+    this.usuarioForm.get('confirmarPassword').clearValidators();
+    this.usuarioForm.get('confirmarPassword').updateValueAndValidity();
+  }
+
+  agregarPasswordValidators() {
+    this.usuarioForm.get('password').setValidators([Validators.required]);
+    this.usuarioForm.get('password').updateValueAndValidity();
+    this.usuarioForm
+      .get('confirmarPassword')
+      .setValidators([Validators.required]);
+    this.usuarioForm.get('confirmarPassword').updateValueAndValidity();
+  }
+
+  validarCamposAlEditar() {
+    if (this.modo === 'editar') {
+      if (
+        (!this.usuarioForm.get('password').value &&
+          this.usuarioForm.get('confirmarPassword').value) ||
+        (this.usuarioForm.get('password').value &&
+          !this.usuarioForm.get('confirmarPassword').value)
+      ) {
+        this.agregarPasswordValidators();
+      } else {
+        this.eliminarPasswordValidators();
+      }
     }
   }
 }

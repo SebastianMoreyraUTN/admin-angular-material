@@ -38,7 +38,7 @@
                     <div class="col-12">
                         <mat-form-field appearance="outline">
                             <mat-label>Contraseña</mat-label>
-                            <input #input formControlName="password" matInput />
+                            <input (keyup)="validarCamposAlEditar('password')" #input formControlName="password" matInput />
                             <mat-error *ngIf="usuarioForm.controls.password.invalid">{{ mostrarError(usuarioForm.controls.password) }}
                             </mat-error>
                         </mat-form-field>
@@ -46,7 +46,7 @@
                     <div class="col-12">
                         <mat-form-field appearance="outline">
                             <mat-label>Confirmar Contraseña</mat-label>
-                            <input #input formControlName="confirmarPassword" matInput />
+                            <input (keyup)="validarCamposAlEditar()" #input formControlName="confirmarPassword" matInput />
                             <mat-error *ngIf="usuarioForm.controls.confirmarPassword.invalid">{{ mostrarError(usuarioForm.controls.confirmarPassword) }}
                             </mat-error>
                         </mat-form-field>
