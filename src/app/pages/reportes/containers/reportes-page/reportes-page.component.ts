@@ -5,6 +5,7 @@ import { FormReportesComponent } from '../../components/form-reportes/form-repor
 import { ReportesService } from '../../services/reportes.service';
 import { Observable } from 'rxjs';
 import { Reporte } from 'src/app/models/reporte.model';
+import { TableComponent } from 'src/app/shared/table/table.component';
 
 @Component({
   selector: 'app-reportes-page',
@@ -26,6 +27,7 @@ export class ReportesPageComponent implements OnInit {
   botonesTabla = [buttons.editar, buttons.actualizar, buttons.eliminar];
   @ViewChild('scroll') formDiv: ElementRef;
   @ViewChild('form') form: FormReportesComponent;
+  @ViewChild('table') table: TableComponent;
 
   constructor(private reportesService: ReportesService) {}
 
@@ -61,6 +63,7 @@ export class ReportesPageComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         Swal.fire('', 'El reporte se ha eliminado con éxito', 'success');
+        this.table.loadData();
       }
     });
   }
@@ -81,5 +84,9 @@ export class ReportesPageComponent implements OnInit {
   nuevoReporte() {
     this.form.limpiarForm();
     this.scroll();
+  }
+
+  actualizarTablaReportes() {
+    this.table.loadData();
   }
 }

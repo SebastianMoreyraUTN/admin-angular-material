@@ -5,6 +5,7 @@ import { buttons } from 'src/assets/table-buttons/table-buttons';
 import Swal from 'sweetalert2';
 import { FormGruposPermisosComponent } from '../../components/form-grupos-permisos/form-grupos-permisos.component';
 import { GruposPermisosService } from '../../services/grupos-permisos.service';
+import { TableComponent } from '../../../../shared/table/table.component';
 
 @Component({
   selector: 'app-grupos-permisos-page',
@@ -18,6 +19,7 @@ export class GruposPermisosPageComponent implements OnInit {
   botonesTabla = [buttons.editar, buttons.eliminar];
   @ViewChild('form') form: FormGruposPermisosComponent;
   @ViewChild('scroll') formDiv: ElementRef;
+  @ViewChild('table') table: TableComponent;
   constructor(private gruposPermisosService: GruposPermisosService) {}
 
   ngOnInit(): void {
@@ -56,6 +58,7 @@ export class GruposPermisosPageComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         Swal.fire('', 'El grupo se ha eliminado con éxito', 'success');
+        this.actualizarTablaGrupos();
       }
     });
   }
@@ -67,5 +70,9 @@ export class GruposPermisosPageComponent implements OnInit {
 
   scroll() {
     this.formDiv.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  actualizarTablaGrupos() {
+    this.table.loadData();
   }
 }

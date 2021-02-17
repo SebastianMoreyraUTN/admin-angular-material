@@ -20,12 +20,28 @@ export class UsuariosPageComponent implements OnInit {
     'editar',
     'eliminar',
   ];
-  usuarios: Observable<Usuario[]>;
   columnas = ['nombre', 'apellido', 'email', 'actualizado'];
+  usuarios: Observable<Usuario[]>;
   botonesTabla = [buttons.editar, buttons.eliminar];
+
+  /*
+    Referencia al contenedor del form para hacer scroll
+    cuando se hace click en Nuevo Usuario  
+  */
   @ViewChild('scroll') formDiv: ElementRef;
+
+  /*
+    Referencia al form de usuario para poder ejecutar sus métodos
+    en caso de necesitar un reset de sus valores o mapear los datos
+    cuando se desea editar un usuario.
+  */
   @ViewChild('form') form: FormUsuariosComponent;
+  /*
+    Referencia a la tabla de usuarios para poder actualizar sus datos
+    al realizar alta/baja/modificación
+  */
   @ViewChild('table') table: TableComponent;
+
   constructor(private usuarioService: UsuariosService) {}
 
   ngOnInit(): void {
@@ -59,11 +75,11 @@ export class UsuariosPageComponent implements OnInit {
         Swal.fire('', 'El usuario se ha eliminado con éxito', 'success');
         console.log('eliminado');
         this.table.data = this.usuarioService.getUsuariosOnDelete();
-        this.table.delete = true;
-        this.table.loadData();
+        this.actualizarTablaUsuarios();
       }
     });
   }
+
   editarUsuario(fila: any): void {
     this.form.mapearValores(fila);
     this.scroll();
@@ -76,5 +92,10 @@ export class UsuariosPageComponent implements OnInit {
 
   scroll() {
     this.formDiv.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  actualizarTablaUsuarios() {
+    //hacer llamada con el servicio
+    this.table.loadData();
   }
 }

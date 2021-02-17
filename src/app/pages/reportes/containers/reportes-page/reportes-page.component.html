@@ -2,7 +2,7 @@
     <mat-toolbar class="page-header" role="heading">
         <h1>Reportes</h1>
     </mat-toolbar>
-    <app-table (clickBoton)="clickEnBotonFila($event)" [data]="reportes" [displayedColumns]="displayedColumns" [columnas]="columnas" [buttons]="botonesTabla">
+    <app-table #table (clickBoton)="clickEnBotonFila($event)" [data]="reportes" [displayedColumns]="displayedColumns" [columnas]="columnas" [buttons]="botonesTabla">
         <div>
             <button (click)="nuevoReporte()" class="nuevo-button" mat-raised-button color="primary">
         <span class="esconder">Nuevo Reporte</span>
@@ -11,6 +11,6 @@
         </div>
     </app-table>
     <div #scroll class="row">
-        <app-form-reportes #form></app-form-reportes>
+        <app-form-reportes (submitReporte)="actualizarTablaReportes()" #form></app-form-reportes>
     </div>
 </app-layout>

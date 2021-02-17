@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -30,6 +37,7 @@ export class FormReportesComponent implements OnInit {
   });
   titulo = 'Nuevo Reporte';
   modo = 'crear';
+  @Output() submitReporte = new EventEmitter();
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
   constructor() {}
 
@@ -44,6 +52,7 @@ export class FormReportesComponent implements OnInit {
       showConfirmButton: true,
       showCloseButton: true,
     });
+    this.submitReporte.emit();
   }
 
   limpiarForm() {

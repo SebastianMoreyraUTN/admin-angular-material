@@ -2,6 +2,7 @@
     <mat-toolbar class="page-header" role="heading">
         <h1>Usuarios</h1>
     </mat-toolbar>
+    <!-- Tabla de usuarios -->
     <app-table #table (clickBoton)="clickEnBotonFila($event)" [data]="usuarios" [displayedColumns]="displayedColumns" [columnas]="columnas" [buttons]="botonesTabla">
         <div>
             <button (click)="nuevoUsuario()" class="nuevo-button" mat-raised-button color="primary">
@@ -10,7 +11,9 @@
       </button>
         </div>
     </app-table>
+
+    <!-- Form para alta/modificación usuario -->
     <div #scroll class="row">
-        <app-form-usuarios #form></app-form-usuarios>
+        <app-form-usuarios (submitUsuario)="actualizarTablaUsuarios()" #form></app-form-usuarios>
     </div>
 </app-layout>

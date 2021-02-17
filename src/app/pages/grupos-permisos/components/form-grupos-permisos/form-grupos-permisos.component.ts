@@ -4,6 +4,7 @@ import {
   ViewChild,
   ChangeDetectorRef,
   ElementRef,
+  Output,
 } from '@angular/core';
 import {
   FormGroup,
@@ -22,6 +23,7 @@ import { VistasService } from '../../../vistas/services/vistas.service';
 import { PresentacionesService } from '../../../presentaciones/services/presentaciones.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Grupo } from '../../../../models/grupo.model';
+import { EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-form-grupos-permisos',
   templateUrl: './form-grupos-permisos.component.html',
@@ -57,6 +59,7 @@ export class FormGruposPermisosComponent implements OnInit {
   @ViewChild('presentacionesMultiselect')
   presentacionesMultiselect: DualMultiselectComponent;
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
+  @Output() submitGrupo = new EventEmitter();
   constructor(
     private changeDetector: ChangeDetectorRef,
     private reportesService: ReportesService,
@@ -126,6 +129,7 @@ export class FormGruposPermisosComponent implements OnInit {
           showConfirmButton: true,
           showCloseButton: true,
         });
+        this.submitGrupo.emit();
       } else {
         Swal.fire({
           position: 'center',

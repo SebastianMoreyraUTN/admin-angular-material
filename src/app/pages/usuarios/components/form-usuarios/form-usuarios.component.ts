@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  ViewChild,
+  EventEmitter,
+} from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -25,8 +31,11 @@ export class FormUsuariosComponent implements OnInit {
   titulo = 'Crear Usuario';
   modo = 'crear';
   grupos: any[] = [];
+  usuarioActual: any;
+  @Output() submitUsuario = new EventEmitter();
   @ViewChild('multiselect') multiselect: DualMultiselectComponent;
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
+
   constructor(private gruposPermisosService: GruposPermisosService) {}
 
   ngOnInit(): void {
@@ -79,6 +88,13 @@ export class FormUsuariosComponent implements OnInit {
       return;
     }
     if (this.validarGruposSeleccionados()) {
+      this.usuarioActual = {
+        nombre: this.usuarioForm.get('nombre').value,
+        apellido: this.usuarioForm.get('apellido').value,
+        email: this.usuarioForm.get('email').value,
+        password: this.usuarioForm.get('password').value,
+        grupos: this.grupos,
+      };
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -86,6 +102,7 @@ export class FormUsuariosComponent implements OnInit {
         showConfirmButton: true,
         showCloseButton: true,
       });
+      this.submitUsuario.emit(this.usuarioActual);
     }
   }
 

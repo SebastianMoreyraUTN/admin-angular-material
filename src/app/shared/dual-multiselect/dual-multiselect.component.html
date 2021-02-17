@@ -26,7 +26,9 @@
                     <mat-selection-list [multiple]="false">
                         <mat-list-option class="animate__animated animate__fadeIn" (click)="seleccionarItem(item)" *ngFor="let item of filtradosIzquierda | async" [value]="item">
                             <mat-icon matListIcon>east</mat-icon>
-                            <h3 matLine>{{ item[this.atributoMostrado] | titlecase }}</h3>
+                            <h3 matLine>
+                                {{ item[this.atributoMostrado] | titlecase }}
+                            </h3>
                             <mat-divider></mat-divider>
                         </mat-list-option>
                     </mat-selection-list>

@@ -20,16 +20,27 @@ export class TableComponent implements OnInit {
   constructor() {}
 
   dataSource: MatTableDataSource<any>;
-  delete = false;
+  isLoadingResults: boolean = false;
+  actualData: any[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  isLoadingResults: boolean = false;
-  actualData: any[] = [];
   @Input() data: Observable<any>;
+
+  /*
+    displayedColumns: Columnas que voy a mostrar en la tabla.
+    Ejemplo:
+      nombre - apellido - editar - eliminar
+  */
   @Input() displayedColumns: string[];
   @Input() buttons: any[];
+  /*
+    columnas: hacer referencia a los atributos del objeto que 
+    se mostrarán en la tabla.
+    Ejemplo:
+    nombre - apellido
+  */
   @Input() columnas: string[];
 
   @Output() clickBoton = new EventEmitter();
@@ -38,24 +49,31 @@ export class TableComponent implements OnInit {
     this.loadData();
   }
 
+  /* 
+    Nos subscribimos al observable que obtenemos del componente
+    padre e inicializamos el data source con la respuesta. También
+    configuramos el paginador y el sorting.
+  */
   loadData() {
     this.isLoadingResults = true;
     this.dataSource = new MatTableDataSource<any>([]);
-    setTimeout(() => {
-      this.data.subscribe((res) => {
-        this.actualData = res;
-        this.dataSource = new MatTableDataSource<any>(this.actualData);
-        this.dataSource.paginator = this.paginator;
-        this.traducirPaginador();
-        this.dataSource.sort = this.sort;
-        this.isLoadingResults = false;
-      });
-    }, 3000);
+    this.data.subscribe((res) => {
+      this.actualData = res;
+      this.dataSource = new MatTableDataSource<any>(this.actualData);
+      this.dataSource.paginator = this.paginator;
+      this.traducirPaginador();
+      this.dataSource.sort = this.sort;
+      this.isLoadingResults = false;
+    });
   }
 
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  /*
+
+  */
+
+  aplicarFiltro(event: Event): void {
+    const valorFiltrado = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = valorFiltrado.trim().toLowerCase();
   }
 
   emitirEvento(fila: any, button: any): void {
@@ -95,7 +113,7 @@ export class TableComponent implements OnInit {
     };
   }
 
-  getPageSize(): any[] {
+  obtenerCantidadPaginas(): any[] {
     if (this.actualData.length <= 5) {
       return [5];
     }
